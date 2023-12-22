@@ -116,23 +116,23 @@ build: go.sum
 ifeq ($(OS),Windows_NT)
 	exit 1
 else
-	go build -mod=readonly $(BUILD_FLAGS) -o build/furyad ./cmd/furyad
+	go build $(BUILD_FLAGS) -o build/furyad ./cmd/furyad
 endif
 
 build/linux/amd64:
-	GOOS=linux GOARCH=amd64 go build -mod=readonly $(BUILD_FLAGS) -o "$@/furyad" ./cmd/furyad
+	GOOS=linux GOARCH=amd64 go build  $(BUILD_FLAGS) -o "$@/furyad" ./cmd/furyad
 
 build/linux/arm64:
-	GOOS=linux GOARCH=arm64 go build -mod=readonly $(BUILD_FLAGS) -o "$@/furyad" ./cmd/furyad
+	GOOS=linux GOARCH=arm64 go build  $(BUILD_FLAGS) -o "$@/furyad" ./cmd/furyad
 
 build/darwin/amd64:
-	GOOS=darwin GOARCH=amd64 go build -mod=readonly $(BUILD_FLAGS) -o "$@/furyad" ./cmd/furyad
+	GOOS=darwin GOARCH=amd64 go build  $(BUILD_FLAGS) -o "$@/furyad" ./cmd/furyad
 
 build/darwin/arm64:
-	GOOS=darwin GOARCH=arm64 go build -mod=readonly $(BUILD_FLAGS) -o "$@/furyad" ./cmd/furyad
+	GOOS=darwin GOARCH=arm64 go build  $(BUILD_FLAGS) -o "$@/furyad" ./cmd/furyad
 
 build/windows/amd64:
-	GOOS=windows GOARCH=amd64 go build -mod=readonly $(BUILD_FLAGS) -o "$@/furyad" ./cmd/furyad
+	GOOS=windows GOARCH=amd64 go build  $(BUILD_FLAGS) -o "$@/furyad" ./cmd/furyad
 
 build-release: build/linux/amd64 build/linux/arm64 build/darwin/amd64 build/darwin/arm64 build/windows/amd64
 
@@ -192,7 +192,7 @@ build-release-arm64: go.sum $(BUILDDIR)/
 	$(DOCKER) rm -f core-builder
 
 install: go.sum 
-	go install -mod=readonly $(BUILD_FLAGS) ./cmd/furyad
+	go install $(BUILD_FLAGS) ./cmd/furyad
 
 .PHONY: build build-linux install
 
@@ -258,16 +258,16 @@ test: test-unit
 test-all: test-unit test-race test-cover
 
 test-unit:
-	@VERSION=$(VERSION) go test -mod=readonly -tags='ledger test_ledger_mock' ./...
+	@VERSION=$(VERSION) go test  -tags='ledger test_ledger_mock' ./...
 
 test-race:
-	@VERSION=$(VERSION) go test -mod=readonly -race -tags='ledger test_ledger_mock' ./...
+	@VERSION=$(VERSION) go test  -race -tags='ledger test_ledger_mock' ./...
 
 test-cover:
-	@go test -mod=readonly -timeout 10m -race -coverprofile=coverage.txt -covermode=atomic -tags='ledger test_ledger_mock' ./...
+	@go test  -timeout 10m -race -coverprofile=coverage.txt -covermode=atomic -tags='ledger test_ledger_mock' ./...
 
 benchmark:
-	@go test -mod=readonly -bench=. ./...
+	@go test  -bench=. ./...
 
 simulate:
 	@go test  -bench BenchmarkSimulation ./app -NumBlocks=200 -BlockSize 50 -Commit=true -Verbose=true -Enabled=true -Seed 1
