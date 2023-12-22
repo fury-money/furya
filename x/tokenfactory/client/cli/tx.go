@@ -10,7 +10,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/client/tx"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/terra-money/core/v2/x/tokenfactory/types"
+	"github.com/fury-money/core/v2/x/tokenfactory/types"
 )
 
 // GetTxCmd returns the transaction commands for this module

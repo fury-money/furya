@@ -9,10 +9,10 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	moduletestutil "github.com/cosmos/cosmos-sdk/types/module/testutil"
 
-	"github.com/terra-money/core/v2/x/feeshare"
-	"github.com/terra-money/core/v2/x/feeshare/exported"
-	v2 "github.com/terra-money/core/v2/x/feeshare/migrations/v2"
-	"github.com/terra-money/core/v2/x/feeshare/types"
+	"github.com/fury-money/core/v2/x/feeshare"
+	"github.com/fury-money/core/v2/x/feeshare/exported"
+	v2 "github.com/fury-money/core/v2/x/feeshare/migrations/v2"
+	"github.com/fury-money/core/v2/x/feeshare/types"
 )
 
 type mockSubspace struct {

@@ -24,10 +24,10 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/module"
 
-	"github.com/terra-money/core/v2/x/tokenfactory/client/cli"
-	"github.com/terra-money/core/v2/x/tokenfactory/exported"
-	"github.com/terra-money/core/v2/x/tokenfactory/keeper"
-	"github.com/terra-money/core/v2/x/tokenfactory/types"
+	"github.com/fury-money/core/v2/x/tokenfactory/client/cli"
+	"github.com/fury-money/core/v2/x/tokenfactory/exported"
+	"github.com/fury-money/core/v2/x/tokenfactory/keeper"
+	"github.com/fury-money/core/v2/x/tokenfactory/types"
 )
 
 var (

@@ -8,7 +8,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
 	"github.com/CosmWasm/wasmd/x/wasm/types"
-	keepertypes "github.com/terra-money/core/v2/x/wasm/types"
+	keepertypes "github.com/fury-money/core/v2/x/wasm/types"
 )
 
 var _ keepertypes.KeeperInterface = Keeper{}

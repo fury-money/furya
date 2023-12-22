@@ -10,7 +10,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/query"
 
-	"github.com/terra-money/core/v2/x/feeshare/types"
+	"github.com/fury-money/core/v2/x/feeshare/types"
 )
 
 var _ types.QueryServer = Querier{}

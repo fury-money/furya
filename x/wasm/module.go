@@ -11,7 +11,7 @@ import (
 	"github.com/CosmWasm/wasmd/x/wasm/simulation"
 	"github.com/CosmWasm/wasmd/x/wasm/types"
 
-	customwasmkeeper "github.com/terra-money/core/v2/x/wasm/keeper"
+	customwasmkeeper "github.com/fury-money/core/v2/x/wasm/keeper"
 
 	"github.com/cosmos/cosmos-sdk/types/module"
 )

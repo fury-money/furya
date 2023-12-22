@@ -3,8 +3,8 @@ package keeper
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/terra-money/core/v2/x/feeshare/exported"
-	v2 "github.com/terra-money/core/v2/x/feeshare/migrations/v2"
+	"github.com/fury-money/core/v2/x/feeshare/exported"
+	v2 "github.com/fury-money/core/v2/x/feeshare/migrations/v2"
 )
 
 // Migrator is a struct for handling in-place state migrations.

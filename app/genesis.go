@@ -9,8 +9,8 @@ import (
 	icahosttypes "github.com/cosmos/ibc-go/v7/modules/apps/27-interchain-accounts/host/types"
 	icatypes "github.com/cosmos/ibc-go/v7/modules/apps/27-interchain-accounts/types"
 	buildertypes "github.com/skip-mev/pob/x/builder/types"
-	"github.com/terra-money/core/v2/app/config"
-	tokenfactorytypes "github.com/terra-money/core/v2/x/tokenfactory/types"
+	"github.com/fury-money/core/v2/app/config"
+	tokenfactorytypes "github.com/fury-money/core/v2/x/tokenfactory/types"
 
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
@@ -35,8 +35,8 @@ func NewDefaultGenesisState(cdc codec.JSONCodec) GenesisState {
 	return ModuleBasics.DefaultGenesis(cdc)
 }
 
-// SetDefaultTerraConfig generates the default state for Terra's Core application.
-func (genState GenesisState) SetDefaultTerraConfig(cdc codec.JSONCodec) GenesisState {
+// SetDefaultFuryaConfig generates the default state for Furya's Core application.
+func (genState GenesisState) SetDefaultFuryaConfig(cdc codec.JSONCodec) GenesisState {
 	// customize bond denom
 	var stakingGenState stakingtypes.GenesisState
 	cdc.MustUnmarshalJSON(genState[stakingtypes.ModuleName], &stakingGenState)

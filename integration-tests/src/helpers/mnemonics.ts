@@ -1,4 +1,4 @@
-import { MnemonicKey } from "@terra-money/feather.js";
+import { MnemonicKey } from "@fury-money/feather.js";
 
 export function getMnemonics() {
     // Chain test-1

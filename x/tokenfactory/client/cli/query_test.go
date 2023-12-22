@@ -7,9 +7,9 @@ import (
 	"cosmossdk.io/math"
 	"github.com/stretchr/testify/suite"
 
-	app "github.com/terra-money/core/v2/app/app_test"
-	"github.com/terra-money/core/v2/app/config"
-	"github.com/terra-money/core/v2/x/tokenfactory/types"
+	app "github.com/fury-money/core/v2/app/app_test"
+	"github.com/fury-money/core/v2/app/config"
+	"github.com/fury-money/core/v2/x/tokenfactory/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )

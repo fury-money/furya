@@ -94,8 +94,8 @@ RUN --mount=type=cache,target=/root/.cache/go-build \
         -ldflags " \
             -w -s -linkmode=external -extldflags \
             '-L/go/src/mimalloc/build -lmimalloc -Wl,-z,muldefs -static' \
-            -X github.com/cosmos/cosmos-sdk/version.Name='terrad' \
-            -X github.com/cosmos/cosmos-sdk/version.AppName='terrad' \
+            -X github.com/cosmos/cosmos-sdk/version.Name='furyad' \
+            -X github.com/cosmos/cosmos-sdk/version.AppName='furyad' \
             -X github.com/cosmos/cosmos-sdk/version.Version=${GIT_VERSION} \
             -X github.com/cosmos/cosmos-sdk/version.Commit=${GIT_COMMIT} \
             -X github.com/cosmos/cosmos-sdk/version.BuildTags='netgo,muslc' \
@@ -105,13 +105,13 @@ RUN --mount=type=cache,target=/root/.cache/go-build \
 
 ################################################################################
 
-FROM alpine:${ALPINE_VERSION} as terra-core
+FROM alpine:${ALPINE_VERSION} as furya-core
 
-COPY --from=builder-stage-2 /go/bin/terrad /usr/local/bin/terrad
+COPY --from=builder-stage-2 /go/bin/furyad /usr/local/bin/furyad
 
-RUN addgroup -g 1000 terra && \
-    adduser -u 1000 -G terra -D -h /app terra
+RUN addgroup -g 1000 furya && \
+    adduser -u 1000 -G furya -D -h /app furya
 
 WORKDIR /app
 
-CMD ["terrad", "--home", "/app", "start"]
+CMD ["furyad", "--home", "/app", "start"]

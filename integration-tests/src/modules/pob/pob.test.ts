@@ -1,6 +1,6 @@
-import { Coins, Fee, MsgSend } from "@terra-money/feather.js";
+import { Coins, Fee, MsgSend } from "@fury-money/feather.js";
 import { getMnemonics, getLCDClient, blockInclusion } from "../../helpers";
-import { MsgAuctionBid } from "@terra-money/feather.js/dist/core/pob/MsgAuctionBid";
+import { MsgAuctionBid } from "@fury-money/feather.js/dist/core/pob/MsgAuctionBid";
 
 describe("Proposer Builder Module (https://github.com/skip-mev/pob) ", () => {
     // Prepare environment clients, accounts and wallets
@@ -20,12 +20,12 @@ describe("Proposer Builder Module (https://github.com/skip-mev/pob) ", () => {
                     "max_bundle_size": 2,
                     "min_bid_increment": {
                         "amount": "1",
-                        "denom": "uluna",
+                        "denom": "ufury",
                     },
                     "proposer_fee": "0.000000000000000000",
                     "reserve_fee": {
                         "amount": "1",
-                        "denom": "uluna",
+                        "denom": "ufury",
                     },
                 },
             });
@@ -39,14 +39,14 @@ describe("Proposer Builder Module (https://github.com/skip-mev/pob) ", () => {
 
         // Query account info to sign the transactions offline 
         // to be included in the MsgAuctionBid
-        const accInfo = await LCD.chain1.auth.accountInfo(wallet.key.accAddress("terra"));
+        const accInfo = await LCD.chain1.auth.accountInfo(wallet.key.accAddress("furya"));
 
         // **First** message to be signed using **wallet**
         const firstMsg = MsgSend.fromData({
             "@type": "/cosmos.bank.v1beta1.MsgSend",
-            "from_address": accounts.pobMnemonic.accAddress("terra"),
-            "to_address": accounts.pobMnemonic1.accAddress("terra"),
-            "amount": [{ "denom": "uluna", "amount": "1" }]
+            "from_address": accounts.pobMnemonic.accAddress("furya"),
+            "to_address": accounts.pobMnemonic1.accAddress("furya"),
+            "amount": [{ "denom": "ufury", "amount": "1" }]
         });
         const firstSignedSendTx = await wallet.createAndSignTx({
             msgs: [firstMsg],
@@ -54,16 +54,16 @@ describe("Proposer Builder Module (https://github.com/skip-mev/pob) ", () => {
             chainID: "test-1",
             accountNumber: accInfo.getAccountNumber(),
             sequence: accInfo.getSequenceNumber() + 1,
-            fee: new Fee(100000, new Coins({ uluna: 100000 })),
+            fee: new Fee(100000, new Coins({ ufury: 100000 })),
             timeoutHeight: parseInt(blockHeight) + 20,
         });
 
         // **Second** message to be signed using **wallet**
         const secondMsg = MsgSend.fromData({
             "@type": "/cosmos.bank.v1beta1.MsgSend",
-            "from_address": accounts.pobMnemonic.accAddress("terra"),
-            "to_address": accounts.pobMnemonic1.accAddress("terra"),
-            "amount": [{ "denom": "uluna", "amount": "2" }]
+            "from_address": accounts.pobMnemonic.accAddress("furya"),
+            "to_address": accounts.pobMnemonic1.accAddress("furya"),
+            "amount": [{ "denom": "ufury", "amount": "2" }]
         });
         const secondSignedSendTx = await wallet.createAndSignTx({
             msgs: [secondMsg],
@@ -71,7 +71,7 @@ describe("Proposer Builder Module (https://github.com/skip-mev/pob) ", () => {
             chainID: "test-1",
             accountNumber: accInfo.getAccountNumber(),
             sequence: accInfo.getSequenceNumber(),
-            fee: new Fee(100000, new Coins({ uluna: 100000 })),
+            fee: new Fee(100000, new Coins({ ufury: 100000 })),
             timeoutHeight: parseInt(blockHeight) + 20,
         });
 
@@ -83,13 +83,13 @@ describe("Proposer Builder Module (https://github.com/skip-mev/pob) ", () => {
         let buildTx = await wallet11.createAndSignTx({
             msgs: [MsgAuctionBid.fromData({
                 "@type": "/pob.builder.v1.MsgAuctionBid",
-                bid: { amount: "100000", denom: "uluna" },
-                bidder: accounts.pobMnemonic1.accAddress("terra"),
+                bid: { amount: "100000", denom: "ufury" },
+                bidder: accounts.pobMnemonic1.accAddress("furya"),
                 transactions: [secondSignedSendTx.toBytes(), firstSignedSendTx.toBytes()]
             })],
             memo: "Build block",
             chainID: "test-1",
-            fee: new Fee(100000, new Coins({ uluna: 100000 })),
+            fee: new Fee(100000, new Coins({ ufury: 100000 })),
             timeoutHeight: parseInt(blockHeight) + 20,
         });
         const result = await LCD.chain1.tx.broadcastSync(buildTx, "test-1");

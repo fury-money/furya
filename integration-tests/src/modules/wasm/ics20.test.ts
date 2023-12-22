@@ -1,5 +1,5 @@
 
-import { MnemonicKey, MsgExecuteContract, MsgInstantiateContract, MsgStoreCode } from "@terra-money/feather.js";
+import { MnemonicKey, MsgExecuteContract, MsgInstantiateContract, MsgStoreCode } from "@fury-money/feather.js";
 import { getMnemonics, getLCDClient, blockInclusion, ibcTransfer } from "../../helpers";
 import fs from "fs";
 import path from 'path';
@@ -10,8 +10,8 @@ describe("Wasm Module (https://github.com/CosmWasm/wasmd/releases/tag/v0.45.0) "
     const LCD = getLCDClient();
     const accounts = getMnemonics();
     const wallet = LCD.chain1.wallet(accounts.wasmContracts);
-    const walletAddress = accounts.wasmContracts.accAddress("terra");
-    const randomWalletAddress = new MnemonicKey().accAddress("terra");
+    const walletAddress = accounts.wasmContracts.accAddress("furya");
+    const randomWalletAddress = new MnemonicKey().accAddress("furya");
     let cw20BaseCodeId: number;
     let ics20CodeId: number;
     let cw20ContractAddr: string;

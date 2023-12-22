@@ -5,8 +5,8 @@ import (
 	serverconfig "github.com/cosmos/cosmos-sdk/server/config"
 )
 
-// TerraAppConfig terra specify app config
-type TerraAppConfig struct {
+// FuryaAppConfig furya specify app config
+type FuryaAppConfig struct {
 	serverconfig.Config
 
 	WASMConfig wasmtypes.WasmConfig `mapstructure:"wasm"`
@@ -31,18 +31,18 @@ func initAppConfig() (string, interface{}) {
 	//   own app.toml to override, or use this default value.
 	//
 	// In simapp, we set the min gas prices to 0.
-	srvCfg.MinGasPrices = "0uluna"
+	srvCfg.MinGasPrices = "0ufury"
 	srvCfg.API.Enable = true
 	srvCfg.API.Swagger = true
 
-	srvCfg.Rosetta.DenomToSuggest = "uluna"
+	srvCfg.Rosetta.DenomToSuggest = "ufury"
 
-	terraAppConfig := TerraAppConfig{
+	furyaAppConfig := FuryaAppConfig{
 		Config:     *srvCfg,
 		WASMConfig: wasmtypes.DefaultWasmConfig(),
 	}
 
-	terraAppTemplate := serverconfig.DefaultConfigTemplate + wasmtypes.DefaultConfigTemplate()
+	furyaAppTemplate := serverconfig.DefaultConfigTemplate + wasmtypes.DefaultConfigTemplate()
 
-	return terraAppTemplate, terraAppConfig
+	return furyaAppTemplate, furyaAppConfig
 }

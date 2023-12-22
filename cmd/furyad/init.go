@@ -24,7 +24,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/module"
 	"github.com/cosmos/cosmos-sdk/x/genutil"
 
-	terraapp "github.com/terra-money/core/v2/app"
+	furyaapp "github.com/fury-money/core/v2/app"
 )
 
 const (
@@ -125,8 +125,8 @@ func InitCmd(mbm module.BasicManager, defaultNodeHome string) *cobra.Command {
 			}
 
 			appState, err := json.MarshalIndent(
-				terraapp.GenesisState(mbm.DefaultGenesis(cdc)).
-					SetDefaultTerraConfig(cdc), "", " ",
+				furyaapp.GenesisState(mbm.DefaultGenesis(cdc)).
+					SetDefaultFuryaConfig(cdc), "", " ",
 			)
 			if err != nil {
 				return errors.Wrap(err, "Failed to marshall default genesis state")

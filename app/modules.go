@@ -50,9 +50,9 @@ import (
 	ibctransfer "github.com/cosmos/ibc-go/v7/modules/apps/transfer"
 	ibctransfertypes "github.com/cosmos/ibc-go/v7/modules/apps/transfer/types"
 	ibc "github.com/cosmos/ibc-go/v7/modules/core"
-	alliancetypes "github.com/terra-money/alliance/x/alliance/types"
-	feesharetypes "github.com/terra-money/core/v2/x/feeshare/types"
-	tokenfactorytypes "github.com/terra-money/core/v2/x/tokenfactory/types"
+	alliancetypes "github.com/fury-money/alliance/x/alliance/types"
+	feesharetypes "github.com/fury-money/core/v2/x/feeshare/types"
+	tokenfactorytypes "github.com/fury-money/core/v2/x/tokenfactory/types"
 
 	vestingtypes "github.com/cosmos/cosmos-sdk/x/auth/vesting/types"
 	capabilitytypes "github.com/cosmos/cosmos-sdk/x/capability/types"
@@ -69,19 +69,19 @@ import (
 	ibchooks "github.com/cosmos/ibc-apps/modules/ibc-hooks/v7"
 
 	"github.com/CosmWasm/wasmd/x/wasm"
-	custombankmodule "github.com/terra-money/core/v2/x/bank"
-	customwasmodule "github.com/terra-money/core/v2/x/wasm"
+	custombankmodule "github.com/fury-money/core/v2/x/bank"
+	customwasmodule "github.com/fury-money/core/v2/x/wasm"
 
-	"github.com/terra-money/core/v2/x/tokenfactory"
+	"github.com/fury-money/core/v2/x/tokenfactory"
 
-	"github.com/terra-money/alliance/x/alliance"
-	feeshare "github.com/terra-money/core/v2/x/feeshare"
+	"github.com/fury-money/alliance/x/alliance"
+	feeshare "github.com/fury-money/core/v2/x/feeshare"
 
 	pob "github.com/skip-mev/pob/x/builder"
 	pobtype "github.com/skip-mev/pob/x/builder/types"
 
 	ibcexported "github.com/cosmos/ibc-go/v7/modules/core/exported"
-	terrappsparams "github.com/terra-money/core/v2/app/params"
+	furyappsparams "github.com/fury-money/core/v2/app/params"
 
 	"github.com/cosmos/cosmos-sdk/x/feegrant"
 )
@@ -125,7 +125,7 @@ var ModuleBasics = module.NewBasicManager(
 
 // NOTE: Any module instantiated in the module manager that is later modified
 // must be passed by reference here.
-func appModules(app *TerraApp, encodingConfig terrappsparams.EncodingConfig, skipGenesisInvariants bool) []module.AppModule {
+func appModules(app *FuryaApp, encodingConfig furyappsparams.EncodingConfig, skipGenesisInvariants bool) []module.AppModule {
 	return []module.AppModule{
 		genutil.NewAppModule(
 			app.Keepers.AccountKeeper, app.Keepers.StakingKeeper, app.BaseApp.DeliverTx,

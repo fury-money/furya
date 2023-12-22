@@ -11,8 +11,8 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/terra-money/core/v2/app"
-	bindings "github.com/terra-money/core/v2/x/tokenfactory/bindings/types"
+	"github.com/fury-money/core/v2/app"
+	bindings "github.com/fury-money/core/v2/x/tokenfactory/bindings/types"
 )
 
 func TestQuery(t *testing.T) {
@@ -21,7 +21,7 @@ func TestQuery(t *testing.T) {
 	app, ctx := SetupCustomApp(t, user)
 	reflect := instantiateReflectContract(t, ctx, app, user)
 	require.NotEmpty(t, reflect)
-	fundAccount(t, ctx, app, reflect, sdk.Coins{sdk.NewInt64Coin("uluna", 100_000_000_000)})
+	fundAccount(t, ctx, app, reflect, sdk.Coins{sdk.NewInt64Coin("ufury", 100_000_000_000)})
 
 	// Create ustart and ustart2 denoms thoguht the smart contract to
 	// query and validate the query binding are working as expected
@@ -48,7 +48,7 @@ func TestQuery(t *testing.T) {
 		Params: bindings.Params{
 			DenomCreationFee: []wasmvmtypes.Coin{
 				{
-					Denom:  "uluna",
+					Denom:  "ufury",
 					Amount: "10000000",
 				},
 			},
@@ -139,7 +139,7 @@ type ChainResponse struct {
 	Data []byte `json:"data"`
 }
 
-func queryCustom(t *testing.T, ctx sdk.Context, app *app.TerraApp, contract sdk.AccAddress, request bindings.TokenQuery, response interface{}) error {
+func queryCustom(t *testing.T, ctx sdk.Context, app *app.FuryaApp, contract sdk.AccAddress, request bindings.TokenQuery, response interface{}) error {
 	t.Helper()
 	wrapped := bindings.TokenFactoryQuery{
 		Token: &request,

@@ -1,17 +1,17 @@
-import { AccAddress, Coin, MsgTransfer, MsgSend, Coins } from "@terra-money/feather.js";
+import { AccAddress, Coin, MsgTransfer, MsgSend, Coins } from "@fury-money/feather.js";
 import { blockInclusion, getLCDClient, getMnemonics } from "../../helpers";
-import { MsgRegisterInterchainAccount, MsgSendTx } from "@terra-money/feather.js/dist/core/ica/controller/v1/msgs";
-import { Height } from "@terra-money/feather.js/dist/core/ibc/core/client/Height";
+import { MsgRegisterInterchainAccount, MsgSendTx } from "@fury-money/feather.js/dist/core/ica/controller/v1/msgs";
+import { Height } from "@fury-money/feather.js/dist/core/ibc/core/client/Height";
 import Long from "long";
-import { InterchainAccountPacketData } from "@terra-money/feather.js/dist/core/ica/controller/v1/InterchainAccountPacketData";
-import { CosmosTx } from "@terra-money/feather.js/dist/core/ica/controller/v1/CosmosTx";
+import { InterchainAccountPacketData } from "@fury-money/feather.js/dist/core/ica/controller/v1/InterchainAccountPacketData";
+import { CosmosTx } from "@fury-money/feather.js/dist/core/ica/controller/v1/CosmosTx";
 
 describe("ICA Module (https://github.com/cosmos/ibc-go/tree/release/v7.3.x/modules/apps/27-interchain-accounts)", () => {
     // Prepare environment clients, accounts and wallets
     const LCD = getLCDClient();
     const { icaMnemonic } = getMnemonics();
     const chain1Wallet = LCD.chain1.wallet(icaMnemonic);
-    const externalAccAddr = icaMnemonic.accAddress("terra");
+    const externalAccAddr = icaMnemonic.accAddress("furya");
     let ibcCoinDenom: string | undefined;
     let intechainAccountAddr: AccAddress | undefined;
 
@@ -95,7 +95,7 @@ describe("ICA Module (https://github.com/cosmos/ibc-go/tree/release/v7.3.x/modul
             )],
             chainID: "test-1",
         }).catch(e => {
-            const expectedMsg = "failed to execute message; message index: 0: existing active channel channel-1 for portID icacontroller-terra1p4kcrttuxj9kyyvv5px5ccgwf0yrw74yp7jqm6 on connection connection-0: active channel already set for this owner";
+            const expectedMsg = "failed to execute message; message index: 0: existing active channel channel-1 for portID icacontroller-furya1p4kcrttuxj9kyyvv5px5ccgwf0yrw74yp7jqm6 on connection connection-0: active channel already set for this owner";
             expect(e.response.data.message.startsWith(expectedMsg))
                 .toBeTruthy();
         });
@@ -114,7 +114,7 @@ describe("ICA Module (https://github.com/cosmos/ibc-go/tree/release/v7.3.x/modul
                         "value": "/ibc.applications.interchain_accounts.controller.v1.MsgRegisterInterchainAccount"
                     }, {
                         "key": "sender",
-                        "value": "terra1p4kcrttuxj9kyyvv5px5ccgwf0yrw74yp7jqm6"
+                        "value": "furya1p4kcrttuxj9kyyvv5px5ccgwf0yrw74yp7jqm6"
                     }]
                 });
             expect(events[2])
@@ -152,7 +152,7 @@ describe("ICA Module (https://github.com/cosmos/ibc-go/tree/release/v7.3.x/modul
                     msgs: [new MsgTransfer(
                         "transfer",
                         "channel-0",
-                        Coin.fromString("100000000uluna"),
+                        Coin.fromString("100000000ufury"),
                         externalAccAddr,
                         intechainAccountAddr as string,
                         new Height(2, parseInt(blockHeight) + 100),
@@ -185,7 +185,7 @@ describe("ICA Module (https://github.com/cosmos/ibc-go/tree/release/v7.3.x/modul
         });
 
         test("Must control the interchain account from chain-1 to send funds on chain-2 from the account address to a burnAddress", async () => {
-            const burnAddress = "terra1zdpgj8am5nqqvht927k3etljyl6a52kwqup0je";
+            const burnAddress = "furya1zdpgj8am5nqqvht927k3etljyl6a52kwqup0je";
             let interchainAccountPacketData = new InterchainAccountPacketData(
                 new CosmosTx([new MsgSend(
                     intechainAccountAddr as string,
@@ -216,7 +216,7 @@ describe("ICA Module (https://github.com/cosmos/ibc-go/tree/release/v7.3.x/modul
                         "value": "/ibc.applications.interchain_accounts.controller.v1.MsgSendTx"
                     }, {
                         "key": "sender",
-                        "value": "terra1p4kcrttuxj9kyyvv5px5ccgwf0yrw74yp7jqm6"
+                        "value": "furya1p4kcrttuxj9kyyvv5px5ccgwf0yrw74yp7jqm6"
                     }]
                 });
             expect(events[2])

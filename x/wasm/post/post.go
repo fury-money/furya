@@ -3,7 +3,7 @@ package post
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	customwasmkeeper "github.com/terra-money/core/v2/x/wasm/keeper"
+	customwasmkeeper "github.com/fury-money/core/v2/x/wasm/keeper"
 )
 
 type WasmdDecorator struct {

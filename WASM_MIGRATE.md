@@ -1,5 +1,5 @@
-## Wasm Migration Guide from Terra Classic
-Terra Rebirth is now using wasm module of [wasmd](https://github.com/CosmWasm/wasmd) and it introduces minor compatibility issue with Terra Classic.
+## Wasm Migration Guide from Furya Classic
+Furya Rebirth is now using wasm module of [wasmd](https://github.com/CosmWasm/wasmd) and it introduces minor compatibility issue with Furya Classic.
 
 ### Contract Address
 Contract Address length will be different from normal account.
@@ -50,7 +50,7 @@ message MsgInstantiateContractResponse {
 }
 ```
 
-Ex) https://github.com/terraswap/terraswap/pull/47
+Ex) https://github.com/furyaswap/furyaswap/pull/47
 
 #### Event
 Event key for instantiated contract also should be changed from `instantiate`.`contract_address` to `instantiate`.`_contract_address`.

@@ -7,8 +7,8 @@ import (
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 
-	feeshare "github.com/terra-money/core/v2/x/feeshare/types"
-	customwasmkeeper "github.com/terra-money/core/v2/x/wasm/keeper"
+	feeshare "github.com/fury-money/core/v2/x/feeshare/types"
+	customwasmkeeper "github.com/fury-money/core/v2/x/wasm/keeper"
 )
 
 type FeeSharePayoutDecorator struct {

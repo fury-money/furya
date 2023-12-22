@@ -11,8 +11,8 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
 
-	"github.com/terra-money/core/v2/app/config"
-	"github.com/terra-money/core/v2/x/feeshare/types"
+	"github.com/fury-money/core/v2/app/config"
+	"github.com/fury-money/core/v2/x/feeshare/types"
 )
 
 //go:embed testdata/reflect.wasm
@@ -50,7 +50,7 @@ func (s *IntegrationTestSuite) InstantiateContract(sender string, admin string) 
 	msgInstantiate := wasmtypes.MsgInstantiateContractFixture(func(m *wasmtypes.MsgInstantiateContract) {
 		m.Sender = sender
 		m.Admin = admin
-		m.Funds = sdk.NewCoins(sdk.NewCoin(config.MicroLuna, sdk.NewInt(1)))
+		m.Funds = sdk.NewCoins(sdk.NewCoin(config.MicroFury, sdk.NewInt(1)))
 		m.Msg = []byte(`{}`)
 	})
 	resp, err := s.App.MsgServiceRouter().Handler(msgInstantiate)(s.Ctx, msgInstantiate)

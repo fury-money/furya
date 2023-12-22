@@ -4,8 +4,8 @@ import (
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/terra-money/core/v2/x/feeshare/exported"
-	"github.com/terra-money/core/v2/x/feeshare/types"
+	"github.com/fury-money/core/v2/x/feeshare/exported"
+	"github.com/fury-money/core/v2/x/feeshare/types"
 )
 
 const (

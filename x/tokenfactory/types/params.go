@@ -32,7 +32,7 @@ func NewParams(denomCreationFee sdk.Coins, denomCreationGasConsume uint64) Param
 func DefaultParams() Params {
 	return Params{
 		// For choice, see: https://github.com/osmosis-labs/osmosis/pull/4983
-		DenomCreationFee: sdk.NewCoins(sdk.NewInt64Coin("uluna", 10000000)),
+		DenomCreationFee: sdk.NewCoins(sdk.NewInt64Coin("ufury", 10000000)),
 		/* #nosec */
 		DenomCreationGasConsume: DefaultCreationGasFee,
 	}

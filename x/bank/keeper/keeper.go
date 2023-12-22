@@ -9,13 +9,13 @@ import (
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 
 	errorsmod "cosmossdk.io/errors"
-	custombankkeeper "github.com/terra-money/alliance/custom/bank/keeper"
-	customterratypes "github.com/terra-money/core/v2/x/bank/types"
+	custombankkeeper "github.com/fury-money/alliance/custom/bank/keeper"
+	customfuryatypes "github.com/fury-money/core/v2/x/bank/types"
 )
 
 type Keeper struct {
 	custombankkeeper.Keeper
-	hooks customterratypes.BankHooks
+	hooks customfuryatypes.BankHooks
 	ak    accountkeeper.AccountKeeper
 }
 
@@ -38,7 +38,7 @@ func NewBaseKeeper(
 }
 
 // Set the bank hooks
-func (k *Keeper) SetHooks(bh customterratypes.BankHooks) *Keeper {
+func (k *Keeper) SetHooks(bh customfuryatypes.BankHooks) *Keeper {
 	if k.hooks != nil {
 		panic("cannot set bank hooks twice")
 	}
@@ -66,11 +66,11 @@ func (k Keeper) SendCoins(ctx sdk.Context, fromAddr sdk.AccAddress, toAddr sdk.A
 func (k Keeper) SendCoinsFromModuleToModule(ctx sdk.Context, senderModule, recipientModule string, amt sdk.Coins) error {
 	senderAddr := k.ak.GetModuleAddress(senderModule)
 	if senderAddr == nil {
-		panic(errorsmod.Wrapf(customterratypes.ErrUnknownAddress, "senderModule address %s is nil", senderModule))
+		panic(errorsmod.Wrapf(customfuryatypes.ErrUnknownAddress, "senderModule address %s is nil", senderModule))
 	}
 	recipientAcc := k.ak.GetModuleAccount(ctx, recipientModule)
 	if recipientAcc == nil {
-		panic(errorsmod.Wrapf(customterratypes.ErrUnknownAddress, "recipientModule address %s is nil", recipientModule))
+		panic(errorsmod.Wrapf(customfuryatypes.ErrUnknownAddress, "recipientModule address %s is nil", recipientModule))
 	}
 
 	return k.Keeper.SendCoins(ctx, senderAddr, recipientAcc.GetAddress(), amt)

@@ -13,8 +13,8 @@ permissions:
 
 env:
   GO_VERSION: 1.20.7
-  TAR_PATH: /tmp/terramoneycore.tar
-  IMAGE_NAME: terramoneycore
+  TAR_PATH: /tmp/furyamoneycore.tar
+  IMAGE_NAME: furyamoneycore
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}

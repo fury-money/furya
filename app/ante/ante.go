@@ -6,7 +6,7 @@ import (
 	"github.com/skip-mev/pob/mempool"
 	pobante "github.com/skip-mev/pob/x/builder/ante"
 	pobkeeper "github.com/skip-mev/pob/x/builder/keeper"
-	feesharekeeper "github.com/terra-money/core/v2/x/feeshare/keeper"
+	feesharekeeper "github.com/fury-money/core/v2/x/feeshare/keeper"
 
 	"github.com/cosmos/cosmos-sdk/client"
 	storetypes "github.com/cosmos/cosmos-sdk/store/types"

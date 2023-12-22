@@ -1,21 +1,21 @@
 import { getLCDClient, getMnemonics, blockInclusion, votingPeriod } from "../../helpers";
-import { Coin, MsgTransfer, MsgCreateAlliance, Coins, MsgVote, Fee, MsgAllianceDelegate, MsgClaimDelegationRewards, MsgAllianceUndelegate, MsgDeleteAlliance, MsgSubmitProposal } from "@terra-money/feather.js";
-import { VoteOption } from "@terra-money/terra.proto/cosmos/gov/v1beta1/gov";
-import { Height } from "@terra-money/feather.js/dist/core/ibc/core/client/Height";
+import { Coin, MsgTransfer, MsgCreateAlliance, Coins, MsgVote, Fee, MsgAllianceDelegate, MsgClaimDelegationRewards, MsgAllianceUndelegate, MsgDeleteAlliance, MsgSubmitProposal } from "@fury-money/feather.js";
+import { VoteOption } from "@fury-money/furya.proto/cosmos/gov/v1beta1/gov";
+import { Height } from "@fury-money/feather.js/dist/core/ibc/core/client/Height";
 
-describe("Alliance Module (https://github.com/terra-money/alliance/tree/release/v0.3.x) ", () => {
+describe("Alliance Module (https://github.com/fury-money/alliance/tree/release/v0.3.x) ", () => {
     // Prepare environment clients, accounts and wallets
     const LCD = getLCDClient();
     const accounts = getMnemonics();
     const chain1Wallet = LCD.chain1.wallet(accounts.allianceMnemonic);
     const val2Wallet = LCD.chain2.wallet(accounts.val2);
-    const val2WalletAddress = val2Wallet.key.accAddress("terra");
-    const val2Address = val2Wallet.key.valAddress("terra");
-    const allianceAccountAddress = accounts.allianceMnemonic.accAddress("terra");
+    const val2WalletAddress = val2Wallet.key.accAddress("furya");
+    const val2Address = val2Wallet.key.valAddress("furya");
+    const allianceAccountAddress = accounts.allianceMnemonic.accAddress("furya");
     // This will be populated in the "Must create an alliance"
-    let ibcCoin = Coin.fromString("1uluna");
+    let ibcCoin = Coin.fromString("1ufury");
 
-    // Send uluna from chain-1 to chain-2 using 
+    // Send ufury from chain-1 to chain-2 using 
     // the same wallet on both chains and start
     // an Alliance creation process
     beforeAll(async () => {
@@ -24,7 +24,7 @@ describe("Alliance Module (https://github.com/terra-money/alliance/tree/release/
             msgs: [new MsgTransfer(
                 "transfer",
                 "channel-0",
-                Coin.fromString("100000000uluna"),
+                Coin.fromString("100000000ufury"),
                 allianceAccountAddress,
                 allianceAccountAddress,
                 new Height(2, parseInt(blockHeight) + 100),
@@ -78,7 +78,7 @@ describe("Alliance Module (https://github.com/terra-money/alliance/tree/release/
         try {
             const msgProposal = new MsgSubmitProposal(
                 [new MsgCreateAlliance(
-                    "terra10d07y265gmmuvt4z0w9aw880jnsr700juxf95n",
+                    "furya10d07y265gmmuvt4z0w9aw880jnsr700juxf95n",
                     ibcCoin.denom,
                     "100000000000000000",
                     "0",
@@ -88,7 +88,7 @@ describe("Alliance Module (https://github.com/terra-money/alliance/tree/release/
                         "min": "100000000000000000",
                         "max": "100000000000000000"
                     })],
-                Coins.fromString("1000000000uluna"),
+                Coins.fromString("1000000000ufury"),
                 val2WalletAddress,
                 "metadata",
                 "title",
@@ -117,7 +117,7 @@ describe("Alliance Module (https://github.com/terra-money/alliance/tree/release/
                     val2WalletAddress,
                     VoteOption.VOTE_OPTION_YES
                 )],
-                fee: new Fee(100_000, "0uluna"),
+                fee: new Fee(100_000, "0ufury"),
                 chainID: "test-2",
             });
             result = await LCD.chain2.tx.broadcastSync(tx, "test-2");
@@ -231,7 +231,7 @@ describe("Alliance Module (https://github.com/terra-money/alliance/tree/release/
                             ibcCoin.denom,
                         ),
                     ],
-                    fee: new Fee(300_000, "0uluna"),
+                    fee: new Fee(300_000, "0ufury"),
                     chainID: "test-2",
                 });
                 let result = await LCD.chain2.tx.broadcastSync(tx, "test-2");
@@ -261,7 +261,7 @@ describe("Alliance Module (https://github.com/terra-money/alliance/tree/release/
                             new Coin(ibcCoin.denom, 1000),
                         ),
                     ],
-                    fee: new Fee(300_000, "0uluna"),
+                    fee: new Fee(300_000, "0ufury"),
                     chainID: "test-2",
                 });
                 let result = await LCD.chain2.tx.broadcastSync(tx, "test-2");
@@ -289,10 +289,10 @@ describe("Alliance Module (https://github.com/terra-money/alliance/tree/release/
 
             const msgProposal = new MsgSubmitProposal(
                 [new MsgDeleteAlliance(
-                    "terra10d07y265gmmuvt4z0w9aw880jnsr700juxf95n",
+                    "furya10d07y265gmmuvt4z0w9aw880jnsr700juxf95n",
                     ibcCoin.denom,
                 )],
-                Coins.fromString("1000000000uluna"),
+                Coins.fromString("1000000000ufury"),
                 val2WalletAddress,
                 "metadata",
                 "title",
@@ -321,7 +321,7 @@ describe("Alliance Module (https://github.com/terra-money/alliance/tree/release/
                     val2WalletAddress,
                     VoteOption.VOTE_OPTION_YES
                 )],
-                fee: new Fee(100_000, "0uluna"),
+                fee: new Fee(100_000, "0ufury"),
                 chainID: "test-2",
             });
             result = await LCD.chain2.tx.broadcastSync(tx, "test-2");

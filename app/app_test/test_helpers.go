@@ -14,10 +14,10 @@ import (
 	tmproto "github.com/cometbft/cometbft/proto/tendermint/types"
 	tmtypes "github.com/cometbft/cometbft/types"
 	"github.com/stretchr/testify/suite"
-	terra_app "github.com/terra-money/core/v2/app"
-	appparams "github.com/terra-money/core/v2/app/params"
-	feesharetypes "github.com/terra-money/core/v2/x/feeshare/types"
-	tokenfactorytypes "github.com/terra-money/core/v2/x/tokenfactory/types"
+	furya_app "github.com/fury-money/core/v2/app"
+	appparams "github.com/fury-money/core/v2/app/params"
+	feesharetypes "github.com/fury-money/core/v2/x/feeshare/types"
+	tokenfactorytypes "github.com/fury-money/core/v2/x/tokenfactory/types"
 
 	"github.com/cosmos/cosmos-sdk/baseapp"
 	codectypes "github.com/cosmos/cosmos-sdk/codec/types"
@@ -34,7 +34,7 @@ import (
 type AppTestSuite struct {
 	suite.Suite
 
-	App            *terra_app.TerraApp
+	App            *furya_app.FuryaApp
 	Ctx            sdk.Context
 	QueryHelper    *baseapp.QueryServiceTestHelper
 	TestAccs       []sdk.AccAddress
@@ -44,18 +44,18 @@ type AppTestSuite struct {
 // Setup sets up basic environment for suite (App, Ctx, and test accounts)
 func (s *AppTestSuite) Setup() {
 	appparams.RegisterAddressesConfig()
-	encCfg := terra_app.MakeEncodingConfig()
-	genesisState := terra_app.NewDefaultGenesisState(encCfg.Marshaler)
-	genesisState.SetDefaultTerraConfig(encCfg.Marshaler)
+	encCfg := furya_app.MakeEncodingConfig()
+	genesisState := furya_app.NewDefaultGenesisState(encCfg.Marshaler)
+	genesisState.SetDefaultFuryaConfig(encCfg.Marshaler)
 
 	db := dbm.NewMemDB()
-	s.App = terra_app.NewTerraApp(
+	s.App = furya_app.NewFuryaApp(
 		log.NewTMLogger(log.NewSyncWriter(os.Stdout)),
 		db,
 		nil,
 		true,
 		map[int64]bool{},
-		terra_app.DefaultNodeHome,
+		furya_app.DefaultNodeHome,
 		0,
 		encCfg,
 		simtestutil.EmptyAppOptions{},
@@ -80,7 +80,7 @@ func (s *AppTestSuite) Setup() {
 	err = s.App.Keepers.TokenFactoryKeeper.SetParams(s.Ctx, tokenfactorytypes.DefaultParams())
 	s.Require().NoError(err)
 
-	err = s.FundModule(authtypes.FeeCollectorName, sdk.NewCoins(sdk.NewCoin("uluna", sdk.NewInt(1000)), sdk.NewCoin("utoken", sdk.NewInt(500))))
+	err = s.FundModule(authtypes.FeeCollectorName, sdk.NewCoins(sdk.NewCoin("ufury", sdk.NewInt(1000)), sdk.NewCoin("utoken", sdk.NewInt(500))))
 	s.Require().NoError(err)
 
 	s.App.Keepers.DistrKeeper.SetFeePool(s.Ctx, distrtypes.InitialFeePool())
@@ -107,7 +107,7 @@ func (s *AppTestSuite) CreateRandomAccounts(numAccts int) []sdk.AccAddress {
 		pk := ed25519.GenPrivKey().PubKey()
 		testAddrs[i] = sdk.AccAddress(pk.Address())
 
-		err := s.FundAcc(testAddrs[i], sdk.NewCoins(sdk.NewInt64Coin("uluna", 100000000)))
+		err := s.FundAcc(testAddrs[i], sdk.NewCoins(sdk.NewInt64Coin("ufury", 100000000)))
 		s.Require().NoError(err)
 	}
 
@@ -138,11 +138,11 @@ func SetupGenesisValSet(
 	valSet *tmtypes.ValidatorSet,
 	genAccs []authtypes.GenesisAccount,
 	opts []wasm.Option,
-	app *terra_app.TerraApp,
+	app *furya_app.FuryaApp,
 	encCfg appparams.EncodingConfig,
 	balances ...banktypes.Balance,
-) terra_app.GenesisState {
-	genesisState := terra_app.NewDefaultGenesisState(encCfg.Marshaler)
+) furya_app.GenesisState {
+	genesisState := furya_app.NewDefaultGenesisState(encCfg.Marshaler)
 	// set genesis accounts
 	authGenesis := authtypes.NewGenesisState(authtypes.DefaultParams(), genAccs)
 	genesisState[authtypes.ModuleName] = app.AppCodec().MustMarshalJSON(authGenesis)

@@ -6,9 +6,9 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	bankkeeper "github.com/cosmos/cosmos-sdk/x/bank/keeper"
 
-	bindingstypes "github.com/terra-money/core/v2/x/tokenfactory/bindings/types"
-	tokenfactorykeeper "github.com/terra-money/core/v2/x/tokenfactory/keeper"
-	"github.com/terra-money/core/v2/x/tokenfactory/types"
+	bindingstypes "github.com/fury-money/core/v2/x/tokenfactory/bindings/types"
+	tokenfactorykeeper "github.com/fury-money/core/v2/x/tokenfactory/keeper"
+	"github.com/fury-money/core/v2/x/tokenfactory/types"
 )
 
 type QueryPlugin struct {

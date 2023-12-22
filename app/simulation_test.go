@@ -8,8 +8,8 @@ import (
 	"github.com/cometbft/cometbft/libs/log"
 
 	"github.com/stretchr/testify/require"
-	"github.com/terra-money/core/v2/app"
-	"github.com/terra-money/core/v2/app/keepers"
+	"github.com/fury-money/core/v2/app"
+	"github.com/fury-money/core/v2/app/keepers"
 
 	wasmtypes "github.com/CosmWasm/wasmd/x/wasm/types"
 	simtestutil "github.com/cosmos/cosmos-sdk/testutil/sims"
@@ -44,7 +44,7 @@ func BenchmarkSimulation(b *testing.B) {
 
 	encoding := app.MakeEncodingConfig()
 
-	terraApp := app.NewTerraApp(
+	furyaApp := app.NewFuryaApp(
 		logger,
 		db,
 		nil,
@@ -61,17 +61,17 @@ func BenchmarkSimulation(b *testing.B) {
 	_, simParams, simErr := simulation.SimulateFromSeed(
 		b,
 		os.Stdout,
-		terraApp.BaseApp,
-		simtestutil.AppStateFn(terraApp.AppCodec(), terraApp.SimulationManager(), terraApp.DefaultGenesis()),
+		furyaApp.BaseApp,
+		simtestutil.AppStateFn(furyaApp.AppCodec(), furyaApp.SimulationManager(), furyaApp.DefaultGenesis()),
 		simulationtypes.RandomAccounts,
-		simtestutil.SimulationOperations(terraApp, terraApp.AppCodec(), config),
+		simtestutil.SimulationOperations(furyaApp, furyaApp.AppCodec(), config),
 		keepers.ModuleAccountAddrs(),
 		config,
-		terraApp.AppCodec(),
+		furyaApp.AppCodec(),
 	)
 
 	// export state and simParams before the simulation error is checked
-	err = simtestutil.CheckExportSimulation(terraApp, config, simParams)
+	err = simtestutil.CheckExportSimulation(furyaApp, config, simParams)
 	require.NoError(b, err)
 	require.NoError(b, simErr)
 
@@ -84,7 +84,7 @@ func TestSimulationManager(t *testing.T) {
 	db := dbm.NewMemDB()
 	encoding := app.MakeEncodingConfig()
 
-	terraApp := app.NewTerraApp(
+	furyaApp := app.NewFuryaApp(
 		log.NewTMLogger(log.NewSyncWriter(os.Stdout)),
 		db,
 		nil,
@@ -96,6 +96,6 @@ func TestSimulationManager(t *testing.T) {
 		simtestutil.EmptyAppOptions{},
 		wasmtypes.DefaultWasmConfig(),
 	)
-	sm := terraApp.SimulationManager()
+	sm := furyaApp.SimulationManager()
 	require.NotNil(t, sm)
 }

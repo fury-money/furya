@@ -1,9 +1,9 @@
 package post
 
 import (
-	feesharepost "github.com/terra-money/core/v2/x/feeshare/post"
-	customwasmkeeper "github.com/terra-money/core/v2/x/wasm/keeper"
-	wasmpost "github.com/terra-money/core/v2/x/wasm/post"
+	feesharepost "github.com/fury-money/core/v2/x/feeshare/post"
+	customwasmkeeper "github.com/fury-money/core/v2/x/wasm/keeper"
+	wasmpost "github.com/fury-money/core/v2/x/wasm/post"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )

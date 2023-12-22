@@ -5,8 +5,8 @@ module.exports = async () => {
     try {
         const pathToDataDir = path.join(__dirname, "/test-data");
         execSync("pkill rly")
-        execSync("pkill terrad")
-        execSync("pkill terrad")
+        execSync("pkill furyad")
+        execSync("pkill furyad")
         execSync(`rm -r ${pathToDataDir}`)
     }
     catch (e) {

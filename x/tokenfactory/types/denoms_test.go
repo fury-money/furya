@@ -5,8 +5,8 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	appparams "github.com/terra-money/core/v2/app/params"
-	"github.com/terra-money/core/v2/x/tokenfactory/types"
+	appparams "github.com/fury-money/core/v2/app/params"
+	"github.com/fury-money/core/v2/x/tokenfactory/types"
 )
 
 func TestDeconstructDenom(t *testing.T) {
@@ -25,37 +25,37 @@ func TestDeconstructDenom(t *testing.T) {
 		},
 		{
 			desc:             "normal",
-			denom:            "factory/terra19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2g/bitcoin",
+			denom:            "factory/furya19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2g/bitcoin",
 			expectedSubdenom: "bitcoin",
 		},
 		{
 			desc:             "multiple slashes in subdenom",
-			denom:            "factory/terra19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2g/bitcoin/1",
+			denom:            "factory/furya19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2g/bitcoin/1",
 			expectedSubdenom: "bitcoin/1",
 		},
 		{
 			desc:             "no subdenom",
-			denom:            "factory/terra19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2g/",
+			denom:            "factory/furya19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2g/",
 			expectedSubdenom: "",
 		},
 		{
 			desc:  "incorrect prefix",
-			denom: "ibc/terra19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2g/bitcoin",
+			denom: "ibc/furya19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2g/bitcoin",
 			err:   types.ErrInvalidDenom,
 		},
 		{
 			desc:             "subdenom of only slashes",
-			denom:            "factory/terra19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2g/////",
+			denom:            "factory/furya19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2g/////",
 			expectedSubdenom: "////",
 		},
 		{
 			desc:  "too long name",
-			denom: "factory/terra19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2g/adsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsf",
+			denom: "factory/furya19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2g/adsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsf",
 			err:   types.ErrInvalidDenom,
 		},
 	} {
 		t.Run(tc.desc, func(t *testing.T) {
-			expectedCreator := "terra19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2g"
+			expectedCreator := "furya19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2g"
 			creator, subdenom, err := types.DeconstructDenom(tc.denom)
 			if tc.err != nil {
 				require.ErrorContains(t, err, tc.err.Error())
@@ -78,43 +78,43 @@ func TestGetTokenDenom(t *testing.T) {
 	}{
 		{
 			desc:     "normal",
-			creator:  "terra19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2g",
+			creator:  "furya19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2g",
 			subdenom: "bitcoin",
 			valid:    true,
 		},
 		{
 			desc:     "multiple slashes in subdenom",
-			creator:  "terra19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2g",
+			creator:  "furya19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2g",
 			subdenom: "bitcoin/1",
 			valid:    true,
 		},
 		{
 			desc:     "no subdenom",
-			creator:  "terra19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2g",
+			creator:  "furya19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2g",
 			subdenom: "",
 			valid:    true,
 		},
 		{
 			desc:     "subdenom of only slashes",
-			creator:  "terra19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2g",
+			creator:  "furya19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2g",
 			subdenom: "/////",
 			valid:    true,
 		},
 		{
 			desc:     "too long name",
-			creator:  "terra19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2g",
+			creator:  "furya19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2g",
 			subdenom: "adsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsfadsf",
 			valid:    false,
 		},
 		{
 			desc:     "subdenom is exactly max length",
-			creator:  "terra19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2g",
+			creator:  "furya19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2g",
 			subdenom: "bitcoinfsadfsdfeadfsafwefsefsefsdfsdafasefsf",
 			valid:    true,
 		},
 		{
 			desc:     "creator is exactly max length",
-			creator:  "terra19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2gjhgjhgkhjklhkjhkjhgjhgjgjghelug",
+			creator:  "furya19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2gjhgjhgkhjklhkjhkjhgjhgjgjghelug",
 			subdenom: "bitcoin",
 			valid:    true,
 		},

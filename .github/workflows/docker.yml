@@ -52,7 +52,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           images: |
             ghcr.io/${{ github.repository }}
-            # terramoney/core
+            # furyamoney/core
           tags: |
             type=sha
             type=edge,branch=test

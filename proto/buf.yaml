@@ -1,6 +1,6 @@
-# This module represents buf.build/terra-money/core
+# This module represents buf.build/fury-money/core
 version: v1
-name: buf.build/terra-money/core
+name: buf.build/fury-money/core
 deps:
   - buf.build/cosmos/cosmos-sdk
   - buf.build/cosmos/cosmos-proto

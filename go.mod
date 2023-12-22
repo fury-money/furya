@@ -1,4 +1,4 @@
-module github.com/terra-money/core/v2
+module github.com/fury-money/core/v2
 
 go 1.20
 
@@ -30,7 +30,7 @@ require (
 	github.com/spf13/cobra v1.7.0
 	github.com/spf13/viper v1.16.0
 	github.com/stretchr/testify v1.8.4
-	github.com/terra-money/alliance v0.3.2
+	github.com/fury-money/alliance v0.3.2
 	go.uber.org/mock v0.3.0
 	google.golang.org/genproto/googleapis/api v0.0.0-20231002182017-d307bd883b97
 	google.golang.org/grpc v1.58.3

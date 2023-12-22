@@ -67,8 +67,8 @@ build_tags_comma_sep := $(subst $(whitespace),$(comma),$(build_tags))
 
 # process linker flags
 
-ldflags = -X github.com/cosmos/cosmos-sdk/version.Name=terra \
-		  -X github.com/cosmos/cosmos-sdk/version.AppName=terrad \
+ldflags = -X github.com/cosmos/cosmos-sdk/version.Name=furya \
+		  -X github.com/cosmos/cosmos-sdk/version.AppName=furyad \
 		  -X github.com/cosmos/cosmos-sdk/version.Version=$(VERSION) \
 		  -X github.com/cosmos/cosmos-sdk/version.Commit=$(COMMIT) \
 		  -X "github.com/cosmos/cosmos-sdk/version.BuildTags=$(build_tags_comma_sep)" \
@@ -116,38 +116,38 @@ build: go.sum
 ifeq ($(OS),Windows_NT)
 	exit 1
 else
-	go build -mod=readonly $(BUILD_FLAGS) -o build/terrad ./cmd/terrad
+	go build -mod=readonly $(BUILD_FLAGS) -o build/furyad ./cmd/furyad
 endif
 
 build/linux/amd64:
-	GOOS=linux GOARCH=amd64 go build -mod=readonly $(BUILD_FLAGS) -o "$@/terrad" ./cmd/terrad
+	GOOS=linux GOARCH=amd64 go build -mod=readonly $(BUILD_FLAGS) -o "$@/furyad" ./cmd/furyad
 
 build/linux/arm64:
-	GOOS=linux GOARCH=arm64 go build -mod=readonly $(BUILD_FLAGS) -o "$@/terrad" ./cmd/terrad
+	GOOS=linux GOARCH=arm64 go build -mod=readonly $(BUILD_FLAGS) -o "$@/furyad" ./cmd/furyad
 
 build/darwin/amd64:
-	GOOS=darwin GOARCH=amd64 go build -mod=readonly $(BUILD_FLAGS) -o "$@/terrad" ./cmd/terrad
+	GOOS=darwin GOARCH=amd64 go build -mod=readonly $(BUILD_FLAGS) -o "$@/furyad" ./cmd/furyad
 
 build/darwin/arm64:
-	GOOS=darwin GOARCH=arm64 go build -mod=readonly $(BUILD_FLAGS) -o "$@/terrad" ./cmd/terrad
+	GOOS=darwin GOARCH=arm64 go build -mod=readonly $(BUILD_FLAGS) -o "$@/furyad" ./cmd/furyad
 
 build/windows/amd64:
-	GOOS=windows GOARCH=amd64 go build -mod=readonly $(BUILD_FLAGS) -o "$@/terrad" ./cmd/terrad
+	GOOS=windows GOARCH=amd64 go build -mod=readonly $(BUILD_FLAGS) -o "$@/furyad" ./cmd/furyad
 
 build-release: build/linux/amd64 build/linux/arm64 build/darwin/amd64 build/darwin/arm64 build/windows/amd64
 
 build-linux:
 	mkdir -p $(BUILDDIR)
-	docker build --no-cache --tag terramoney/core ./
-	docker create --name temp terramoney/core:latest
-	docker cp temp:/usr/local/bin/terrad $(BUILDDIR)/
+	docker build --no-cache --tag furyamoney/core ./
+	docker create --name temp furyamoney/core:latest
+	docker cp temp:/usr/local/bin/furyad $(BUILDDIR)/
 	docker rm temp
 
 build-linux-with-shared-library:
 	mkdir -p $(BUILDDIR)
-	docker build --tag terramoney/core-shared ./ -f ./shared.Dockerfile
-	docker create --name temp terramoney/core-shared:latest
-	docker cp temp:/usr/local/bin/terrad $(BUILDDIR)/
+	docker build --tag furyamoney/core-shared ./ -f ./shared.Dockerfile
+	docker create --name temp furyamoney/core-shared:latest
+	docker cp temp:/usr/local/bin/furyad $(BUILDDIR)/
 	docker cp temp:/lib/libwasmvm.so $(BUILDDIR)/
 	docker rm temp
 
@@ -166,9 +166,9 @@ build-release-amd64: go.sum $(BUILDDIR)/
 		-f Dockerfile .
 	$(DOCKER) rm -f core-builder || true
 	$(DOCKER) create -ti --name core-builder core:local-amd64
-	$(DOCKER) cp core-builder:/usr/local/bin/terrad $(BUILDDIR)/release/terrad
-	tar -czvf $(BUILDDIR)/release/terra_$(VERSION)_Linux_x86_64.tar.gz -C $(BUILDDIR)/release/ terrad
-	rm $(BUILDDIR)/release/terrad
+	$(DOCKER) cp core-builder:/usr/local/bin/furyad $(BUILDDIR)/release/furyad
+	tar -czvf $(BUILDDIR)/release/furya_$(VERSION)_Linux_x86_64.tar.gz -C $(BUILDDIR)/release/ furyad
+	rm $(BUILDDIR)/release/furyad
 	$(DOCKER) rm -f core-builder
 
 build-release-arm64: go.sum $(BUILDDIR)/
@@ -186,13 +186,13 @@ build-release-arm64: go.sum $(BUILDDIR)/
 		-f Dockerfile .
 	$(DOCKER) rm -f core-builder || true
 	$(DOCKER) create -ti --name core-builder core:local-arm64
-	$(DOCKER) cp core-builder:/usr/local/bin/terrad $(BUILDDIR)/release/terrad 
-	tar -czvf $(BUILDDIR)/release/terra_$(VERSION)_Linux_arm64.tar.gz -C $(BUILDDIR)/release/ terrad 
-	rm $(BUILDDIR)/release/terrad
+	$(DOCKER) cp core-builder:/usr/local/bin/furyad $(BUILDDIR)/release/furyad 
+	tar -czvf $(BUILDDIR)/release/furya_$(VERSION)_Linux_arm64.tar.gz -C $(BUILDDIR)/release/ furyad 
+	rm $(BUILDDIR)/release/furyad
 	$(DOCKER) rm -f core-builder
 
 install: go.sum 
-	go install -mod=readonly $(BUILD_FLAGS) ./cmd/terrad
+	go install -mod=readonly $(BUILD_FLAGS) ./cmd/furyad
 
 .PHONY: build build-linux install
 
@@ -237,7 +237,7 @@ go.sum: go.mod
 draw-deps:
 	@# requires brew install graphviz or apt-get install graphviz
 	go get github.com/RobotsAndPencils/goviz
-	@goviz -i ./cmd/terrad -d 2 | dot -Tpng -o dependency-graph.png
+	@goviz -i ./cmd/furyad -d 2 | dot -Tpng -o dependency-graph.png
 
 distclean: clean tools-clean
 clean:

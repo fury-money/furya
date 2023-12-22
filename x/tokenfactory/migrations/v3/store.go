@@ -1,8 +1,8 @@
 package v3
 
 import (
-	"github.com/terra-money/core/v2/x/tokenfactory/exported"
-	"github.com/terra-money/core/v2/x/tokenfactory/types"
+	"github.com/fury-money/core/v2/x/tokenfactory/exported"
+	"github.com/fury-money/core/v2/x/tokenfactory/types"
 
 	"github.com/cosmos/cosmos-sdk/codec"
 	storetypes "github.com/cosmos/cosmos-sdk/store/types"

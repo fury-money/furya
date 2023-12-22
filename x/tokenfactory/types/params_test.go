@@ -6,16 +6,16 @@ import (
 	"cosmossdk.io/math"
 	"github.com/stretchr/testify/require"
 
-	"github.com/terra-money/core/v2/x/tokenfactory/types"
+	"github.com/fury-money/core/v2/x/tokenfactory/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )
 
 func TestCreateNewParms(t *testing.T) {
 	// Creaate new params
-	params := types.NewParams(sdk.NewCoins(sdk.NewCoin("uluna", math.NewInt(100000))), 10)
+	params := types.NewParams(sdk.NewCoins(sdk.NewCoin("ufury", math.NewInt(100000))), 10)
 	new_expected_params := types.Params{
-		DenomCreationFee:        sdk.NewCoins(sdk.NewCoin("uluna", math.NewInt(100000))),
+		DenomCreationFee:        sdk.NewCoins(sdk.NewCoin("ufury", math.NewInt(100000))),
 		DenomCreationGasConsume: 10,
 	}
 	require.Equal(t, new_expected_params, params)

@@ -1,10 +1,10 @@
 # Register a contract
 
-Use this guide to register your contract. For a more in-depth guide on registering, visit the [Terra Docs feeshare tutorial](https://docs.terra.money/develop/guides/register-feeshare)
+Use this guide to register your contract. For a more in-depth guide on registering, visit the [Furya Docs feeshare tutorial](https://docs.furya.money/develop/guides/register-feeshare)
 
-## Using terrad
+## Using furyad
 
-`terrad tx feeshare register [contract_bech32] [withdraw_bech32] --from [key]`
+`furyad tx feeshare register [contract_bech32] [withdraw_bech32] --from [key]`
 
 Registers the withdrawal address for the given contract.
 
@@ -32,7 +32,7 @@ withdraw_bech32 can not be the community pool (distribution) address. This is a 
 
 This can be changed at any time, as long as the sender still the admin or creator of the contract:
 
-`terrad tx feeshare update [contract] [new_withdraw_address]`
+`furyad tx feeshare update [contract] [new_withdraw_address]`
 
 ## Update Exception
 

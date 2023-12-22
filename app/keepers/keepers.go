@@ -86,26 +86,26 @@ import (
 	wasmkeeper "github.com/CosmWasm/wasmd/x/wasm/keeper"
 	wasmtypes "github.com/CosmWasm/wasmd/x/wasm/types"
 	icahost "github.com/cosmos/ibc-go/v7/modules/apps/27-interchain-accounts/host"
-	customwasmkeeper "github.com/terra-money/core/v2/x/wasm/keeper"
+	customwasmkeeper "github.com/fury-money/core/v2/x/wasm/keeper"
 
 	icacontroller "github.com/cosmos/ibc-go/v7/modules/apps/27-interchain-accounts/controller"
 	icacontrollerkeeper "github.com/cosmos/ibc-go/v7/modules/apps/27-interchain-accounts/controller/keeper"
-	tokenfactorykeeper "github.com/terra-money/core/v2/x/tokenfactory/keeper"
-	tokenfactorytypes "github.com/terra-money/core/v2/x/tokenfactory/types"
+	tokenfactorykeeper "github.com/fury-money/core/v2/x/tokenfactory/keeper"
+	tokenfactorytypes "github.com/fury-money/core/v2/x/tokenfactory/types"
 
 	pobtype "github.com/skip-mev/pob/x/builder/types"
-	"github.com/terra-money/alliance/x/alliance"
-	alliancekeeper "github.com/terra-money/alliance/x/alliance/keeper"
-	alliancetypes "github.com/terra-money/alliance/x/alliance/types"
-	custombankkeeper "github.com/terra-money/core/v2/x/bank/keeper"
-	feesharekeeper "github.com/terra-money/core/v2/x/feeshare/keeper"
-	feesharetypes "github.com/terra-money/core/v2/x/feeshare/types"
+	"github.com/fury-money/alliance/x/alliance"
+	alliancekeeper "github.com/fury-money/alliance/x/alliance/keeper"
+	alliancetypes "github.com/fury-money/alliance/x/alliance/types"
+	custombankkeeper "github.com/fury-money/core/v2/x/bank/keeper"
+	feesharekeeper "github.com/fury-money/core/v2/x/feeshare/keeper"
+	feesharetypes "github.com/fury-money/core/v2/x/feeshare/types"
 
 	pobkeeper "github.com/skip-mev/pob/x/builder/keeper"
 
-	terraappconfig "github.com/terra-money/core/v2/app/config"
+	furyaappconfig "github.com/fury-money/core/v2/app/config"
 	// unnamed import of statik for swagger UI support
-	_ "github.com/terra-money/core/v2/client/docs/statik"
+	_ "github.com/fury-money/core/v2/client/docs/statik"
 )
 
 var wasmCapabilities = "iterator,staking,stargate,token_factory,cosmwasm_1_1,cosmwasm_1_2,cosmwasm_1_3,cosmwasm_1_4"
@@ -129,7 +129,7 @@ var maccPerms = map[string][]string{
 	pobtype.ModuleName:             nil,
 }
 
-type TerraAppKeepers struct {
+type FuryaAppKeepers struct {
 	// Stores Keys
 	keys    map[string]*storetypes.KVStoreKey
 	tkeys   map[string]*storetypes.TransientStoreKey
@@ -182,14 +182,14 @@ type TerraAppKeepers struct {
 	BuilderKeeper pobkeeper.Keeper
 }
 
-func NewTerraAppKeepers(
+func NewFuryaAppKeepers(
 	appCodec codec.Codec,
 	baseApp *baseapp.BaseApp,
 	cdc *codec.LegacyAmino,
 	appOpts servertypes.AppOptions,
 	wasmOpts []wasmkeeper.Option,
 	homePath string,
-) (keepers TerraAppKeepers) {
+) (keepers FuryaAppKeepers) {
 	// Set keys KVStoreKey, TransientStoreKey, MemoryStoreKey
 	keepers.GenerateKeys()
 	keys := keepers.GetKVStoreKey()
@@ -228,7 +228,7 @@ func NewTerraAppKeepers(
 		keys[authtypes.StoreKey],
 		authtypes.ProtoBaseAccount,
 		maccPerms,
-		terraappconfig.AccountAddressPrefix,
+		furyaappconfig.AccountAddressPrefix,
 		authtypes.NewModuleAddress(govtypes.ModuleName).String(),
 	)
 	keepers.BankKeeper = custombankkeeper.NewBaseKeeper(
@@ -355,7 +355,7 @@ func NewTerraAppKeepers(
 		keys[ibchookstypes.StoreKey],
 	)
 	keepers.IBCHooksKeeper = &hooksKeeper
-	wasmHooks := ibchooks.NewWasmHooks(&hooksKeeper, nil, terraappconfig.AccountAddressPrefix) // The contract keeper needs to be set later
+	wasmHooks := ibchooks.NewWasmHooks(&hooksKeeper, nil, furyaappconfig.AccountAddressPrefix) // The contract keeper needs to be set later
 	keepers.Ics20WasmHooks = &wasmHooks
 	keepers.HooksICS4Wrapper = ibchooks.NewICS4Middleware(
 		keepers.IBCKeeper.ChannelKeeper,
@@ -548,7 +548,7 @@ func NewTerraAppKeepers(
 }
 
 // ModuleAccountAddrs returns all the app's module account addresses.
-func (app *TerraAppKeepers) ModuleAccountAddrs() map[string]bool {
+func (app *FuryaAppKeepers) ModuleAccountAddrs() map[string]bool {
 	modAccAddrs := make(map[string]bool)
 
 	/* #nosec */
@@ -562,7 +562,7 @@ func (app *TerraAppKeepers) ModuleAccountAddrs() map[string]bool {
 }
 
 // initParamsKeeper init params keeper and its subspaces
-func (app *TerraAppKeepers) initParamsKeeper(appCodec codec.BinaryCodec, legacyAmino *codec.LegacyAmino, key, tkey storetypes.StoreKey) paramskeeper.Keeper {
+func (app *FuryaAppKeepers) initParamsKeeper(appCodec codec.BinaryCodec, legacyAmino *codec.LegacyAmino, key, tkey storetypes.StoreKey) paramskeeper.Keeper {
 	paramsKeeper := paramskeeper.NewKeeper(appCodec, legacyAmino, key, tkey)
 
 	// Cosmo SDK Base Modules
@@ -593,7 +593,7 @@ func (app *TerraAppKeepers) initParamsKeeper(appCodec codec.BinaryCodec, legacyA
 }
 
 // GetSubspace returns a param subspace for a given module name.
-func (appKeepers *TerraAppKeepers) GetSubspace(moduleName string) paramstypes.Subspace {
+func (appKeepers *FuryaAppKeepers) GetSubspace(moduleName string) paramstypes.Subspace {
 	subspace, _ := appKeepers.ParamsKeeper.GetSubspace(moduleName)
 	return subspace
 }

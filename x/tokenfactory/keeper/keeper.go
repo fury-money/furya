@@ -11,8 +11,8 @@ import (
 	storetypes "github.com/cosmos/cosmos-sdk/store/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	customtypes "github.com/terra-money/core/v2/x/bank/keeper"
-	"github.com/terra-money/core/v2/x/tokenfactory/types"
+	customtypes "github.com/fury-money/core/v2/x/bank/keeper"
+	"github.com/fury-money/core/v2/x/tokenfactory/types"
 )
 
 type (

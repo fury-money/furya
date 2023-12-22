@@ -6,10 +6,10 @@ order: 8
 
 ## Command Line Interface
 
-Find below a list of `terrad` commands added with the  `x/feeshare` module. You can obtain the full list by using the `terrad -h` command. A CLI command can look like this:
+Find below a list of `furyad` commands added with the  `x/feeshare` module. You can obtain the full list by using the `furyad -h` command. A CLI command can look like this:
 
 ```bash
-terrad query feeshare params
+furyad query feeshare params
 ```
 
 ### Queries

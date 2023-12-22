@@ -1,6 +1,6 @@
-# Terra Core Integration Tests
+# Furya Core Integration Tests
 
-This project is meant to increase the success ratio for new core releases, improve reliability and features for [@terra-money/feather.js](https://github.com/terra-money/feather.js). This tests are written using TypeScript with [jest](https://jestjs.io/) and executed in parallel to improve time execution.
+This project is meant to increase the success ratio for new core releases, improve reliability and features for [@fury-money/feather.js](https://github.com/fury-money/feather.js). This tests are written using TypeScript with [jest](https://jestjs.io/) and executed in parallel to improve time execution.
 
 ### Development
 

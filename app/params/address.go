@@ -2,7 +2,7 @@ package params
 
 import (
 	wasmtypes "github.com/CosmWasm/wasmd/x/wasm/types"
-	"github.com/terra-money/core/v2/app/config"
+	"github.com/fury-money/core/v2/app/config"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 )

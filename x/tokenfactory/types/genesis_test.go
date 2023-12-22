@@ -5,8 +5,8 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	appparams "github.com/terra-money/core/v2/app/params"
-	"github.com/terra-money/core/v2/x/tokenfactory/types"
+	appparams "github.com/fury-money/core/v2/app/params"
+	"github.com/fury-money/core/v2/x/tokenfactory/types"
 )
 
 func TestGenesisState_Validate(t *testing.T) {
@@ -28,9 +28,9 @@ func TestGenesisState_Validate(t *testing.T) {
 			genState: &types.GenesisState{
 				FactoryDenoms: []types.GenesisDenom{
 					{
-						Denom: "factory/terra19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2g/bitcoin",
+						Denom: "factory/furya19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2g/bitcoin",
 						AuthorityMetadata: types.DenomAuthorityMetadata{
-							Admin: "terra19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2g",
+							Admin: "furya19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2g",
 						},
 					},
 				},
@@ -42,9 +42,9 @@ func TestGenesisState_Validate(t *testing.T) {
 			genState: &types.GenesisState{
 				FactoryDenoms: []types.GenesisDenom{
 					{
-						Denom: "factory/terra19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2g/bitcoin",
+						Denom: "factory/furya19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2g/bitcoin",
 						AuthorityMetadata: types.DenomAuthorityMetadata{
-							Admin: "terra19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2g",
+							Admin: "furya19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2g",
 						},
 					},
 				},
@@ -56,7 +56,7 @@ func TestGenesisState_Validate(t *testing.T) {
 			genState: &types.GenesisState{
 				FactoryDenoms: []types.GenesisDenom{
 					{
-						Denom: "factory/terra19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2g/bitcoin",
+						Denom: "factory/furya19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2g/bitcoin",
 						AuthorityMetadata: types.DenomAuthorityMetadata{
 							Admin: "",
 						},
@@ -70,7 +70,7 @@ func TestGenesisState_Validate(t *testing.T) {
 			genState: &types.GenesisState{
 				FactoryDenoms: []types.GenesisDenom{
 					{
-						Denom: "factory/terra19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2g/bitcoin",
+						Denom: "factory/furya19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2g/bitcoin",
 					},
 				},
 			},
@@ -81,7 +81,7 @@ func TestGenesisState_Validate(t *testing.T) {
 			genState: &types.GenesisState{
 				FactoryDenoms: []types.GenesisDenom{
 					{
-						Denom: "factory/terra19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2g/bitcoin",
+						Denom: "factory/furya19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2g/bitcoin",
 						AuthorityMetadata: types.DenomAuthorityMetadata{
 							Admin: "moose",
 						},
@@ -95,13 +95,13 @@ func TestGenesisState_Validate(t *testing.T) {
 			genState: &types.GenesisState{
 				FactoryDenoms: []types.GenesisDenom{
 					{
-						Denom: "factory/terra19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2g/bitcoin",
+						Denom: "factory/furya19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2g/bitcoin",
 						AuthorityMetadata: types.DenomAuthorityMetadata{
 							Admin: "",
 						},
 					},
 					{
-						Denom: "factory/terra19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2g/litecoin",
+						Denom: "factory/furya19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2g/litecoin",
 						AuthorityMetadata: types.DenomAuthorityMetadata{
 							Admin: "",
 						},
@@ -115,13 +115,13 @@ func TestGenesisState_Validate(t *testing.T) {
 			genState: &types.GenesisState{
 				FactoryDenoms: []types.GenesisDenom{
 					{
-						Denom: "factory/terra19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2g/bitcoin",
+						Denom: "factory/furya19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2g/bitcoin",
 						AuthorityMetadata: types.DenomAuthorityMetadata{
 							Admin: "",
 						},
 					},
 					{
-						Denom: "factory/terra19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2g/bitcoin",
+						Denom: "factory/furya19hukvr8hppdwqnx7tkaslarz5s449qahu5kp2g/bitcoin",
 						AuthorityMetadata: types.DenomAuthorityMetadata{
 							Admin: "",
 						},

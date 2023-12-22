@@ -3,7 +3,7 @@ package keeper
 import (
 	"fmt"
 
-	customwasmkeeper "github.com/terra-money/core/v2/x/wasm/keeper"
+	customwasmkeeper "github.com/fury-money/core/v2/x/wasm/keeper"
 
 	"github.com/cometbft/cometbft/libs/log"
 
@@ -11,7 +11,7 @@ import (
 	storetypes "github.com/cosmos/cosmos-sdk/store/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	revtypes "github.com/terra-money/core/v2/x/feeshare/types"
+	revtypes "github.com/fury-money/core/v2/x/feeshare/types"
 )
 
 // Keeper of this module maintains collections of feeshares for contracts

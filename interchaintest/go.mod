@@ -1,4 +1,4 @@
-module github.com/terra-money/core/interchaintest
+module github.com/fury-money/core/interchaintest
 
 go 1.20
 

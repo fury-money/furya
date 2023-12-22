@@ -1,7 +1,7 @@
 import { getMnemonics } from "../../helpers/mnemonics";
 import { getLCDClient } from "../../helpers/lcd.connection";
-import { StakeAuthorization, MsgGrantAuthorization, AuthorizationGrant, Coin, MsgExecAuthorized, MsgDelegate } from "@terra-money/feather.js";
-import { AuthorizationType } from "@terra-money/terra.proto/cosmos/staking/v1beta1/authz";
+import { StakeAuthorization, MsgGrantAuthorization, AuthorizationGrant, Coin, MsgExecAuthorized, MsgDelegate } from "@fury-money/feather.js";
+import { AuthorizationType } from "@fury-money/furya.proto/cosmos/staking/v1beta1/authz";
 import moment from "moment";
 import { blockInclusion } from "../../helpers/const";
 
@@ -12,9 +12,9 @@ describe("Authz Module (https://github.com/terra-money/cosmos-sdk/tree/release/v
     // will not cause conflicts with txs nonces
     const granterWallet = LCD.chain2.wallet(accounts.feeshareMnemonic);
     const granteeWallet = LCD.chain2.wallet(accounts.pobMnemonic);
-    const granterAddr = accounts.feeshareMnemonic.accAddress("terra");
-    const granteeAddr = accounts.pobMnemonic.accAddress("terra");
-    const val2Addr = accounts.val2.valAddress("terra");
+    const granterAddr = accounts.feeshareMnemonic.accAddress("furya");
+    const granteeAddr = accounts.pobMnemonic.accAddress("furya");
+    const val2Addr = accounts.val2.valAddress("furya");
 
     test('Must register the granter', async () => {
         let tx = await granterWallet.createAndSignTx({
@@ -24,7 +24,7 @@ describe("Authz Module (https://github.com/terra-money/cosmos-sdk/tree/release/v
                 new AuthorizationGrant(
                     new StakeAuthorization(
                         AuthorizationType.AUTHORIZATION_TYPE_DELEGATE,
-                        Coin.fromString("1000000uluna"),
+                        Coin.fromString("1000000ufury"),
                     ),
                     moment().add(1, "hour").toDate(),
                 ),
@@ -44,7 +44,7 @@ describe("Authz Module (https://github.com/terra-money/cosmos-sdk/tree/release/v
                     "value": "/cosmos.authz.v1beta1.MsgGrant"
                 }, {
                     "key": "sender",
-                    "value": "terra120rzk7n6cd2vufkmwrat34adqh0rgca9tkyfe5"
+                    "value": "furya120rzk7n6cd2vufkmwrat34adqh0rgca9tkyfe5"
                 }, {
                     "key": "module",
                     "value": "authz"
@@ -53,10 +53,10 @@ describe("Authz Module (https://github.com/terra-money/cosmos-sdk/tree/release/v
                 "type": "cosmos.authz.v1beta1.EventGrant",
                 "attributes": [{
                     "key": "grantee",
-                    "value": "\"terra1v0eee20gjl68fuk0chyrkch2z7suw2mhg3wkxf\""
+                    "value": "\"furya1v0eee20gjl68fuk0chyrkch2z7suw2mhg3wkxf\""
                 }, {
                     "key": "granter",
-                    "value": "\"terra120rzk7n6cd2vufkmwrat34adqh0rgca9tkyfe5\""
+                    "value": "\"furya120rzk7n6cd2vufkmwrat34adqh0rgca9tkyfe5\""
                 }, {
                     "key": "msg_type_url",
                     "value": "\"/cosmos.staking.v1beta1.MsgDelegate\""
@@ -72,7 +72,7 @@ describe("Authz Module (https://github.com/terra-money/cosmos-sdk/tree/release/v
                     [new MsgDelegate(
                         granterAddr,
                         val2Addr,
-                        Coin.fromString("1000000uluna"),
+                        Coin.fromString("1000000ufury"),
                     )]
                 )],
                 chainID: "test-2",
@@ -92,7 +92,7 @@ describe("Authz Module (https://github.com/terra-money/cosmos-sdk/tree/release/v
                         "value": "/cosmos.authz.v1beta1.MsgExec"
                     }, {
                         "key": "sender",
-                        "value": "terra1v0eee20gjl68fuk0chyrkch2z7suw2mhg3wkxf"
+                        "value": "furya1v0eee20gjl68fuk0chyrkch2z7suw2mhg3wkxf"
                     }, {
                         "key": "module",
                         "value": "authz"
@@ -103,10 +103,10 @@ describe("Authz Module (https://github.com/terra-money/cosmos-sdk/tree/release/v
                         "type": "cosmos.authz.v1beta1.EventRevoke",
                         "attributes": [{
                             "key": "grantee",
-                            "value": "\"terra1v0eee20gjl68fuk0chyrkch2z7suw2mhg3wkxf\""
+                            "value": "\"furya1v0eee20gjl68fuk0chyrkch2z7suw2mhg3wkxf\""
                         }, {
                             "key": "granter",
-                            "value": "\"terra120rzk7n6cd2vufkmwrat34adqh0rgca9tkyfe5\""
+                            "value": "\"furya120rzk7n6cd2vufkmwrat34adqh0rgca9tkyfe5\""
                         }, {
                             "key": "msg_type_url",
                             "value": "\"/cosmos.staking.v1beta1.MsgDelegate\""
@@ -118,13 +118,13 @@ describe("Authz Module (https://github.com/terra-money/cosmos-sdk/tree/release/v
                     "type": "delegate",
                     "attributes": [{
                         "key": "validator",
-                        "value": "terravaloper1llgzglr9yyy4gyjh8p5kepgm5wyl358de47rqk"
+                        "value": "furyavaloper1llgzglr9yyy4gyjh8p5kepgm5wyl358de47rqk"
                     }, {
                         "key": "delegator",
-                        "value": "terra120rzk7n6cd2vufkmwrat34adqh0rgca9tkyfe5"
+                        "value": "furya120rzk7n6cd2vufkmwrat34adqh0rgca9tkyfe5"
                     }, {
                         "key": "amount",
-                        "value": "1000000uluna"
+                        "value": "1000000ufury"
                     }, {
                         "key": "new_shares",
                         "value": "1000000.000000000000000000"

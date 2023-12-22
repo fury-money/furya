@@ -1,7 +1,7 @@
 package types
 
 var (
-	executedContractsKey = []byte("terra/executedContracts")
+	executedContractsKey = []byte("furya/executedContracts")
 )
 
 func GetExecutedContractsKey() []byte {

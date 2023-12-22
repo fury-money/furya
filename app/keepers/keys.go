@@ -41,18 +41,18 @@ import (
 
 	wasmtypes "github.com/CosmWasm/wasmd/x/wasm/types"
 
-	tokenfactorytypes "github.com/terra-money/core/v2/x/tokenfactory/types"
+	tokenfactorytypes "github.com/fury-money/core/v2/x/tokenfactory/types"
 
-	alliancetypes "github.com/terra-money/alliance/x/alliance/types"
-	feesharetypes "github.com/terra-money/core/v2/x/feeshare/types"
+	alliancetypes "github.com/fury-money/alliance/x/alliance/types"
+	feesharetypes "github.com/fury-money/core/v2/x/feeshare/types"
 
 	pobtype "github.com/skip-mev/pob/x/builder/types"
 
 	// unnamed import of statik for swagger UI support
-	_ "github.com/terra-money/core/v2/client/docs/statik"
+	_ "github.com/fury-money/core/v2/client/docs/statik"
 )
 
-func (keepers *TerraAppKeepers) GenerateKeys() {
+func (keepers *FuryaAppKeepers) GenerateKeys() {
 	keepers.keys = sdk.NewKVStoreKeys(
 		authtypes.StoreKey, banktypes.StoreKey, stakingtypes.StoreKey,
 		minttypes.StoreKey, distrtypes.StoreKey, slashingtypes.StoreKey,
@@ -69,35 +69,35 @@ func (keepers *TerraAppKeepers) GenerateKeys() {
 	keepers.memKeys = sdk.NewMemoryStoreKeys(capabilitytypes.MemStoreKey)
 }
 
-func (keepers *TerraAppKeepers) GetKVStoreKey() map[string]*storetypes.KVStoreKey {
+func (keepers *FuryaAppKeepers) GetKVStoreKey() map[string]*storetypes.KVStoreKey {
 	return keepers.keys
 }
 
-func (keepers *TerraAppKeepers) GetTransientStoreKey() map[string]*storetypes.TransientStoreKey {
+func (keepers *FuryaAppKeepers) GetTransientStoreKey() map[string]*storetypes.TransientStoreKey {
 	return keepers.tkeys
 }
 
-func (keepers *TerraAppKeepers) GetMemoryStoreKey() map[string]*storetypes.MemoryStoreKey {
+func (keepers *FuryaAppKeepers) GetMemoryStoreKey() map[string]*storetypes.MemoryStoreKey {
 	return keepers.memKeys
 }
 
 // GetKey returns the KVStoreKey for the provided store key.
 //
 // NOTE: This is solely to be used for testing purposes.
-func (keepers *TerraAppKeepers) GetKey(storeKey string) *storetypes.KVStoreKey {
+func (keepers *FuryaAppKeepers) GetKey(storeKey string) *storetypes.KVStoreKey {
 	return keepers.keys[storeKey]
 }
 
 // GetTKey returns the TransientStoreKey for the provided store key.
 //
 // NOTE: This is solely to be used for testing purposes.
-func (keepers *TerraAppKeepers) GetTKey(storeKey string) *storetypes.TransientStoreKey {
+func (keepers *FuryaAppKeepers) GetTKey(storeKey string) *storetypes.TransientStoreKey {
 	return keepers.tkeys[storeKey]
 }
 
 // GetMemKey returns the MemStoreKey for the provided mem key.
 //
 // NOTE: This is solely used for testing purposes.
-func (keepers *TerraAppKeepers) GetMemKey(storeKey string) *storetypes.MemoryStoreKey {
+func (keepers *FuryaAppKeepers) GetMemKey(storeKey string) *storetypes.MemoryStoreKey {
 	return keepers.memKeys[storeKey]
 }

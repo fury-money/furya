@@ -19,10 +19,10 @@ import (
 	simtypes "github.com/cosmos/cosmos-sdk/types/simulation"
 	authkeeper "github.com/cosmos/cosmos-sdk/x/auth/keeper"
 
-	"github.com/terra-money/core/v2/x/feeshare/client/cli"
-	"github.com/terra-money/core/v2/x/feeshare/exported"
-	"github.com/terra-money/core/v2/x/feeshare/keeper"
-	"github.com/terra-money/core/v2/x/feeshare/types"
+	"github.com/fury-money/core/v2/x/feeshare/client/cli"
+	"github.com/fury-money/core/v2/x/feeshare/exported"
+	"github.com/fury-money/core/v2/x/feeshare/keeper"
+	"github.com/fury-money/core/v2/x/feeshare/types"
 )
 
 // type check to ensure the interface is properly implemented

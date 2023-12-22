@@ -6,11 +6,11 @@ import (
 
 	"github.com/stretchr/testify/suite"
 
-	app_test "github.com/terra-money/core/v2/app/app_test"
+	app_test "github.com/fury-money/core/v2/app/app_test"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/terra-money/core/v2/x/feeshare/types"
+	"github.com/fury-money/core/v2/x/feeshare/types"
 )
 
 type GenesisTestSuite struct {
@@ -40,7 +40,7 @@ func (suite *GenesisTestSuite) TestFeeShareInitGenesis() {
 				Params: types.Params{
 					EnableFeeShare:  false,
 					DeveloperShares: types.DefaultDeveloperShares,
-					AllowedDenoms:   []string{"uluna"},
+					AllowedDenoms:   []string{"ufury"},
 				},
 			},
 			false,
@@ -51,7 +51,7 @@ func (suite *GenesisTestSuite) TestFeeShareInitGenesis() {
 				Params: types.Params{
 					EnableFeeShare:  true,
 					DeveloperShares: sdk.NewDecWithPrec(0, 2),
-					AllowedDenoms:   []string{"uluna"},
+					AllowedDenoms:   []string{"ufury"},
 				},
 			},
 			false,
@@ -62,7 +62,7 @@ func (suite *GenesisTestSuite) TestFeeShareInitGenesis() {
 				Params: types.Params{
 					EnableFeeShare:  true,
 					DeveloperShares: sdk.NewDecWithPrec(100, 2),
-					AllowedDenoms:   []string{"uluna"},
+					AllowedDenoms:   []string{"ufury"},
 				},
 			},
 			false,
