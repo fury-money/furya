@@ -14,9 +14,9 @@ info:
     href='https://alliance.furya.money/'>Alliance Docs</a><br/>More info about
     the protocol on <a target='_blank' href='https://docs.furya.money/'>Furya
     Docs</a>
-  version: 'v2.8'
+  version: v2.8
 paths:
-  /furya/alliances:
+  /terra/alliances:
     get:
       summary: Query paginated alliances
       operationId: Alliances
@@ -193,7 +193,7 @@ paths:
           type: boolean
       tags:
         - Query
-  /furya/alliances/delegations:
+  /terra/alliances/delegations:
     get:
       summary: Query all paginated alliance delegations
       operationId: AllAlliancesDelegations
@@ -369,7 +369,7 @@ paths:
           type: boolean
       tags:
         - Query
-  /furya/alliances/delegations/{delegator_addr}:
+  /terra/alliances/delegations/{delegator_addr}:
     get:
       summary: Query all paginated alliance delegations for a delegator addr
       operationId: AlliancesDelegation
@@ -549,7 +549,7 @@ paths:
           type: boolean
       tags:
         - Query
-  /furya/alliances/delegations/{delegator_addr}/{validator_addr}:
+  /terra/alliances/delegations/{delegator_addr}/{validator_addr}:
     get:
       summary: >-
         Query all paginated alliance delegations for a delegator addr and
@@ -735,7 +735,7 @@ paths:
           type: boolean
       tags:
         - Query
-  /furya/alliances/delegations/{delegator_addr}/{validator_addr}/ibc/{hash}:
+  /terra/alliances/delegations/{delegator_addr}/{validator_addr}/ibc/{hash}:
     get:
       summary: >-
         Query a delegation to an alliance by delegator addr, validator_addr and
@@ -744,7 +744,7 @@ paths:
         @deprecated: this endpoint will be replaced for by the encoded version
 
         of the denom e.g.:
-        GET:/furya/alliances/furyadr1231/furyavaloper41234/ibc%2Falliance
+        GET:/terra/alliances/terradr1231/terravaloper41234/ibc%2Falliance
       operationId: IBCAllianceDelegation
       responses:
         '200':
@@ -900,7 +900,7 @@ paths:
           type: boolean
       tags:
         - Query
-  /furya/alliances/delegations/{delegator_addr}/{validator_addr}/{denom}:
+  /terra/alliances/delegations/{delegator_addr}/{validator_addr}/{denom}:
     get:
       summary: >-
         Query a delegation to an alliance by delegator addr, validator_addr and
@@ -1060,12 +1060,12 @@ paths:
           type: boolean
       tags:
         - Query
-  /furya/alliances/ibc/{hash}:
+  /terra/alliances/ibc/{hash}:
     get:
       summary: |-
         Query a specific alliance by ibc hash
         @deprecated: this endpoint will be replaced for by the encoded version
-        of the denom e.g.: GET:/furya/alliances/ibc%2Falliance
+        of the denom e.g.: GET:/terra/alliances/ibc%2Falliance
       operationId: IBCAlliance
       responses:
         '200':
@@ -1157,7 +1157,7 @@ paths:
           type: string
       tags:
         - Query
-  /furya/alliances/params:
+  /terra/alliances/params:
     get:
       operationId: AllianceParams
       responses:
@@ -1204,7 +1204,7 @@ paths:
                       format: byte
       tags:
         - Query
-  /furya/alliances/redelegations/{denom}/{delegator_addr}:
+  /terra/alliances/redelegations/{denom}/{delegator_addr}:
     get:
       summary: Query redelegations by denom and delegator address
       operationId: AllianceRedelegations
@@ -1368,7 +1368,7 @@ paths:
           type: boolean
       tags:
         - Query
-  /furya/alliances/rewards/{delegator_addr}/{validator_addr}/ibc/{hash}:
+  /terra/alliances/rewards/{delegator_addr}/{validator_addr}/ibc/{hash}:
     get:
       summary: >-
         Query for rewards by delegator addr, validator_addr and denom
@@ -1376,7 +1376,7 @@ paths:
         @deprecated: this endpoint will be replaced for by the encoded version
 
         of the denom e.g.:
-        GET:/furya/alliances/furyadr1231/furyavaloper41234/ibc%2Falliance
+        GET:/terra/alliances/terradr1231/terravaloper41234/ibc%2Falliance
       operationId: IBCAllianceDelegationRewards
       responses:
         '200':
@@ -1494,7 +1494,7 @@ paths:
           type: boolean
       tags:
         - Query
-  /furya/alliances/rewards/{delegator_addr}/{validator_addr}/{denom}:
+  /terra/alliances/rewards/{delegator_addr}/{validator_addr}/{denom}:
     get:
       summary: Query for rewards by delegator addr, validator_addr and denom
       operationId: AllianceDelegationRewards
@@ -1614,7 +1614,7 @@ paths:
           type: boolean
       tags:
         - Query
-  /furya/alliances/unbondings/{denom}/{delegator_addr}:
+  /terra/alliances/unbondings/{denom}/{delegator_addr}:
     get:
       summary: Query for rewards by delegator addr, validator_addr and denom
       operationId: AllianceUnbondingsByDenomAndDelegator
@@ -1763,7 +1763,7 @@ paths:
           type: boolean
       tags:
         - Query
-  /furya/alliances/unbondings/{denom}/{delegator_addr}/{validator_addr}:
+  /terra/alliances/unbondings/{denom}/{delegator_addr}/{validator_addr}:
     get:
       summary: Query for rewards by delegator addr, validator_addr and denom
       operationId: AllianceUnbondings
@@ -1916,7 +1916,7 @@ paths:
           type: boolean
       tags:
         - Query
-  /furya/alliances/validators:
+  /terra/alliances/validators:
     get:
       summary: Query all paginated alliance validators
       operationId: AllAllianceValidators
@@ -2096,7 +2096,7 @@ paths:
           type: boolean
       tags:
         - Query
-  /furya/alliances/validators/{validator_addr}:
+  /terra/alliances/validators/{validator_addr}:
     get:
       summary: Query alliance validator
       operationId: AllianceValidator
@@ -2191,7 +2191,7 @@ paths:
           type: string
       tags:
         - Query
-  /furya/alliances/{denom}:
+  /terra/alliances/{denom}:
     get:
       summary: Query a specific alliance by denom
       operationId: Alliance
@@ -2287,9 +2287,15 @@ paths:
         - Query
   /osmosis/tokenfactory/v1beta1/denoms/{denom}/authority_metadata:
     get:
-      summary: |-
-        DenomAuthorityMetadata defines a gRPC query method for fetching
-        DenomAuthorityMetadata for a particular denom.
+      summary: >-
+        Given the denom, returns the authority metadata for the denom.
+
+        This method can receive both the denom encoded to URL (for the LCD
+        requests)
+
+        and the denom not encoded:
+
+        e.g. factory%2Ffurya1v0eee20gjl68fuk0chyrkch2z7suw2mhg3wkxf%2Futoken931
       operationId: DenomAuthorityMetadata
       responses:
         '200':
