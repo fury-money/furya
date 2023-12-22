@@ -5,7 +5,7 @@ import (
 	icacontrollertypes "github.com/cosmos/ibc-go/v7/modules/apps/27-interchain-accounts/controller/types"
 	ibcfeetypes "github.com/cosmos/ibc-go/v7/modules/apps/29-fee/types"
 	pobtype "github.com/skip-mev/pob/x/builder/types"
-	alliancetypes "github.com/fury-money/alliance/x/alliance/types"
+	alliancetypes "github.com/terra-money/alliance/x/alliance/types"
 	furyaappconfig "github.com/fury-money/core/v2/app/config"
 	v2_2_0 "github.com/fury-money/core/v2/app/upgrades/v2.2.0"
 	v2_3_0 "github.com/fury-money/core/v2/app/upgrades/v2.3.0"

@@ -13,7 +13,7 @@ fi
 # Get the path of the cosmos-sdk repo from go/pkg/mod
 gogo_proto_dir=$(go list -f '{{ .Dir }}' -m github.com/gogo/protobuf)
 cosmos_sdk_dir=$(go list -f '{{ .Dir }}' -m github.com/cosmos/cosmos-sdk)
-alliance_dir=$(go list -f '{{ .Dir }}' -m github.com/fury-money/alliance)
+alliance_dir=$(go list -f '{{ .Dir }}' -m github.com/terra-money/alliance)
 ibc_dir=$(go list -f '{{ .Dir }}' -m github.com/cosmos/ibc-go/v7)
 ibc_pfm=$(go list -f '{{ .Dir }}' -m github.com/cosmos/ibc-apps/middleware/packet-forward-middleware/v7)
 icq_proto_dir=$(go list -f '{{ .Dir }}' -m github.com/cosmos/ibc-apps/modules/async-icq/v7)

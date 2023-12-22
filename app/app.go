@@ -83,9 +83,9 @@ import (
 
 	wasmtypes "github.com/CosmWasm/wasmd/x/wasm/types"
 
-	"github.com/fury-money/alliance/x/alliance"
-	allianceclient "github.com/fury-money/alliance/x/alliance/client"
-	alliancetypes "github.com/fury-money/alliance/x/alliance/types"
+	"github.com/terra-money/alliance/x/alliance"
+	allianceclient "github.com/terra-money/alliance/x/alliance/client"
+	alliancetypes "github.com/terra-money/alliance/x/alliance/types"
 	feeshare "github.com/fury-money/core/v2/x/feeshare"
 	feesharetypes "github.com/fury-money/core/v2/x/feeshare/types"
 

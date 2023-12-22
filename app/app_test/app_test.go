@@ -12,7 +12,7 @@ import (
 	ibcfee "github.com/cosmos/ibc-go/v7/modules/apps/29-fee"
 	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/require"
-	"github.com/fury-money/alliance/x/alliance"
+	"github.com/terra-money/alliance/x/alliance"
 	"github.com/fury-money/core/v2/x/feeshare"
 	"github.com/fury-money/core/v2/x/tokenfactory"
 

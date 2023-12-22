@@ -50,7 +50,7 @@ import (
 	ibctransfer "github.com/cosmos/ibc-go/v7/modules/apps/transfer"
 	ibctransfertypes "github.com/cosmos/ibc-go/v7/modules/apps/transfer/types"
 	ibc "github.com/cosmos/ibc-go/v7/modules/core"
-	alliancetypes "github.com/fury-money/alliance/x/alliance/types"
+	alliancetypes "github.com/terra-money/alliance/x/alliance/types"
 	feesharetypes "github.com/fury-money/core/v2/x/feeshare/types"
 	tokenfactorytypes "github.com/fury-money/core/v2/x/tokenfactory/types"
 
@@ -74,7 +74,7 @@ import (
 
 	"github.com/fury-money/core/v2/x/tokenfactory"
 
-	"github.com/fury-money/alliance/x/alliance"
+	"github.com/terra-money/alliance/x/alliance"
 	feeshare "github.com/fury-money/core/v2/x/feeshare"
 
 	pob "github.com/skip-mev/pob/x/builder"

@@ -43,7 +43,7 @@ import (
 
 	tokenfactorytypes "github.com/fury-money/core/v2/x/tokenfactory/types"
 
-	alliancetypes "github.com/fury-money/alliance/x/alliance/types"
+	alliancetypes "github.com/terra-money/alliance/x/alliance/types"
 	feesharetypes "github.com/fury-money/core/v2/x/feeshare/types"
 
 	pobtype "github.com/skip-mev/pob/x/builder/types"

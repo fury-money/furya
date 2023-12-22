@@ -94,9 +94,9 @@ import (
 	tokenfactorytypes "github.com/fury-money/core/v2/x/tokenfactory/types"
 
 	pobtype "github.com/skip-mev/pob/x/builder/types"
-	"github.com/fury-money/alliance/x/alliance"
-	alliancekeeper "github.com/fury-money/alliance/x/alliance/keeper"
-	alliancetypes "github.com/fury-money/alliance/x/alliance/types"
+	"github.com/terra-money/alliance/x/alliance"
+	alliancekeeper "github.com/terra-money/alliance/x/alliance/keeper"
+	alliancetypes "github.com/terra-money/alliance/x/alliance/types"
 	custombankkeeper "github.com/fury-money/core/v2/x/bank/keeper"
 	feesharekeeper "github.com/fury-money/core/v2/x/feeshare/keeper"
 	feesharetypes "github.com/fury-money/core/v2/x/feeshare/types"

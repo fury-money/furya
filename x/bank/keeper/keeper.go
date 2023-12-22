@@ -9,7 +9,7 @@ import (
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 
 	errorsmod "cosmossdk.io/errors"
-	custombankkeeper "github.com/fury-money/alliance/custom/bank/keeper"
+	custombankkeeper "github.com/terra-money/alliance/custom/bank/keeper"
 	customfuryatypes "github.com/fury-money/core/v2/x/bank/types"
 )
 

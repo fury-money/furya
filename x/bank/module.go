@@ -7,7 +7,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/bank/exported"
 	"github.com/cosmos/cosmos-sdk/x/bank/types"
 
-	customalliancemod "github.com/fury-money/alliance/custom/bank"
+	customalliancemod "github.com/terra-money/alliance/custom/bank"
 	custombankkeeper "github.com/fury-money/core/v2/x/bank/keeper"
 
 	"github.com/cosmos/cosmos-sdk/types/module"

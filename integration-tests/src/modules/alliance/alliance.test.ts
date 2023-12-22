@@ -3,7 +3,7 @@ import { Coin, MsgTransfer, MsgCreateAlliance, Coins, MsgVote, Fee, MsgAllianceD
 import { VoteOption } from "@fury-money/furya.proto/cosmos/gov/v1beta1/gov";
 import { Height } from "@fury-money/feather.js/dist/core/ibc/core/client/Height";
 
-describe("Alliance Module (https://github.com/fury-money/alliance/tree/release/v0.3.x) ", () => {
+describe("Alliance Module (https://github.com/terra-money/alliance/tree/release/v0.3.x) ", () => {
     // Prepare environment clients, accounts and wallets
     const LCD = getLCDClient();
     const accounts = getMnemonics();
